@@ -13,7 +13,7 @@ This repository hosts materials for the Python/Git/Echopype workshop at the 2025
   - Something to make sure you have jupyterlab installed -- check package version
 - Helpers to recruit
   - Julek
-  - Erin Labrecque
+  - Erin LaBrecque
 - Github repo
   - ~Add to BOAT org~
   - ~Add Sven to github org~
