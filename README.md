@@ -4,13 +4,14 @@ This repository hosts materials for the Git/Python/Echopype workshop at the 2025
 
 
 ## Tentative schedule
+The workshop will take place as 2 sessions, each lasting half of a day, so that participants have time to digest the materials.
 
-### Day 1
+### Session 1
 - Workshop content overview
 - Git / GitHub and similar services
 - Python
 
-### Day 2
+### Session 2
 - Echopype
 - Data structure
 - Data convention
