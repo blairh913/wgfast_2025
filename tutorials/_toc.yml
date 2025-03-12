@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: landing
+parts:
+  - caption: Overview  # overall framework
+    chapters:
+    - file: overview
+    # - file: markdown2
+  - caption: Git/GitHub tutorials  # Git/GitHub tutorials
+    chapters:
+    - file: git_intro
+    # - file: notebooks2
+  - caption: Python tutorials  # python tutorials
+    chapters:
+    - file: notebooks
+    # - file: markdown-notebooks2
+  - caption: Echopype tutorials  # echopype tutorials
+    chapters:
+    - file: markdown-notebooks
+    # - file: markdown-notebooks2
