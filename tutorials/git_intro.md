@@ -1,8 +1,12 @@
-# Git Instructions for Beginners
+# What is Git?
 
-[Git](https://git-scm.com)
+```{image} ./images/Git-Icon-1788C.png
+:alt: Git Logo
+:class: bg-primary mb-1
+:width: 200px
+:align: center
+```
 
-## What is Git?
 [Git](https://git-scm.com/) is a free and open source distributed version control system for working on group projects. Originally designed for developers to work collaboratively on large software projects, Git has been repurposed by many scientific communities to manage the evolution of projects in a structured and reproducible way.
 
 With Git, all files related to a project (images, documents, code, etc.) and their change histories are stored in a single repository. Repositories support a hierarchical directory structure, meaning folders and subfolders are allowed. The WGFAST repository is hosted on GitHub in the ICES-eg workspace.
