@@ -1,10 +1,15 @@
 # What is Git?
+![Git](images/Git-Icon-1788C.png)
+  
 
-```{image} ./images/Git-Icon-1788C.png
+```{image} images/Git-Icon-1788C.png
 :alt: Git Logo
-:class: bg-primary mb-1
 :width: 200px
 :align: center
+```
+
+```{note}
+here is a note
 ```
 
 [Git](https://git-scm.com/) is a free and open source distributed version control system for working on group projects. Originally designed for developers to work collaboratively on large software projects, Git has been repurposed by many scientific communities to manage the evolution of projects in a structured and reproducible way.
