@@ -8,8 +8,12 @@ parts:
     chapters:
     - file: overview
     # - file: markdown2
+  - caption: Pre-workshop setup
+    chapters:
+    - file: pre-ws_download_install # Pre-workshop notes
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
+    - file: github_intro
     - file: git_intro
     # - file: notebooks2
   - caption: Python tutorials  # python tutorials
