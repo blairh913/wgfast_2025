@@ -1,39 +1,20 @@
 # GitHub Introduction  
 
-```{figure} images/Octocat.png
+```{image} images/Octocat.png
 :alt: GitHub Octocat
 :width: 100px
 :align: center
-
-Octocat
 ```  
-
+sdf as 
 ## What is GitHub?
 
-[GitHub](https://github.com/) is a web-based hosting service that manages Git repositories. GitHub **is not** Git. It is the "thing" you use to share and collaborate on the work you do in your Git repository. GitHub is like a bustling open-air market, where each stall (repository/project) offers unique goods, crafted by different merchants (developers - you!).
+[GitHub](https://github.com/) is a web-based hosting service that manages Git repositories. GitHub **is not** Git. GitHub allows you share and collaborate on the work in Git repositories.
 
 GitHub is one of the most popular hosting platforms for version control systems, but there are others including [GitLab](https://gitlab.com/) and [Bitbucket](https://bitbucket.org/).
 
-## Create a GitHub account
-
-1. Go to <https://github.com> and create an account
-
-```{image} images/GH_signup_button.png
-:alt: GitHub signup button
-:width: 150px
-```
-
-2. Choose your username and enter the email address you want linked to the GitHub account
-
-3. Prove you are not a robot
-
-4. Enter the confirmation code sent to your email address entered in 2
-
-5. Sign in
-
-The landing page after you sign in is your GitHub Dashboard. Feel free to explore the tutorials.
-
 ## Create a repository  
+
+After you create your account and sign in, you will land on your GitHub Dashboard page. Your GitHub Dashboard or Home. If you follow other developers or specific repositories, any updates will show up here. 
 
 To get to your profile or repositories, click on your icon in the upper right corner...
 
@@ -75,6 +56,6 @@ To create a new repository:
 :align: center
 ```
 
-```
+<br>
 
-Congratulations! You created a project repository on GitHub. 
+Congratulations! You created a project repository on GitHub.

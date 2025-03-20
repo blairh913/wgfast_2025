@@ -1,5 +1,10 @@
 # Markdown Files
 
+EL Notes: Do we need this file? How about something along the lines of the wanting to provide the FAST community with documentation on how to use these open source tools. Was there feedback from the 2024 meeting that spurred this?
+
+
+
+
 Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
 in regular markdown files (`.md`), you'll write in the same flavor of markdown
 called **MyST Markdown**.
