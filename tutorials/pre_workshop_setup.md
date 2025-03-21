@@ -10,7 +10,8 @@ Please do the following:
 
 ## Some things to keep in mind
 
-Git and GitHub interactions
+Git and GitHub Interactions
+
 ```{image} images/Git_GitHub_workflow.png
 :alt: Git-GitHub workflow diagram
 :align: center

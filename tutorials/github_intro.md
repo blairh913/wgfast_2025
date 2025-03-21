@@ -5,34 +5,34 @@
 :width: 100px
 :align: center
 ```  
-sdf as 
+
 ## What is GitHub?
 
-[GitHub](https://github.com/) is a web-based hosting service that manages Git repositories. GitHub **is not** Git. GitHub allows you share and collaborate on the work in Git repositories.
+[GitHub](https://github.com/) is a web-based hosting service that manages Git repositories. GitHub **is not** Git. GitHub allows you to collaborate on the work in Git repositories.
 
 GitHub is one of the most popular hosting platforms for version control systems, but there are others including [GitLab](https://gitlab.com/) and [Bitbucket](https://bitbucket.org/).
 
-## Create a repository  
+## How to Create a repository  
 
-After you create your account and sign in, you will land on your GitHub Dashboard page. Your GitHub Dashboard or Home. If you follow other developers or specific repositories, any updates will show up here. 
+After you create your account and sign in, you will land on your GitHub Dashboard page or Home. If you follow other developers or specific repositories, their updates will show up here.
 
-To get to your profile or repositories, click on your icon in the upper right corner...
+To get to your repositories, click on your icon in the upper right corner...
 
 ```{image} images/GitHub_personalicon.png
 :alt: GitHub personal icon
 :align: center
 ```
-<br>
+
+&nbsp;
 
 ... and a menu of options will appear. Choose `Your repositories`
-<br> 
 
 ```{image} images/GitHub_choose_repos.png
 :alt:
 :align: center
 ```
 
-<br>
+&nbsp;
 
 If you have not created any repositories yet, you will see a page similar to this:  
 
@@ -41,10 +41,11 @@ If you have not created any repositories yet, you will see a page similar to thi
 :align: center
 ```
 
-<br>
+&nbsp;
 
 To create a new repository:
-- Click the green `New` 
+
+- Click the green `New`
 - Add a repository name, and short description
 - Keep the repository public
 - Initialize the repository with a README file. These are initially written in Markdown and are a great way to tell people what your repository (project) is about.
@@ -56,6 +57,6 @@ To create a new repository:
 :align: center
 ```
 
-<br>
+&nbsp;
 
 Congratulations! You created a project repository on GitHub.
