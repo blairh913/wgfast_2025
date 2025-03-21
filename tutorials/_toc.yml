@@ -7,15 +7,16 @@ parts:
   - caption: Overview  # overall framework
     chapters:
     - file: overview
-    # - file: markdown2
-  - caption: Pre-workshop setup
+  - caption: Pre-workshop Setup
     chapters:
-    - file: pre-ws_download_install # Pre-workshop notes
+    - file: pre_workshop_setup # Pre-workshop notes
+  - caption: Agenda
+    chapters:
+    - file: Agenda
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
     - file: github_intro
     - file: git_intro
-    # - file: notebooks2
   - caption: Python tutorials  # python tutorials
     chapters:
     - file: notebooks
