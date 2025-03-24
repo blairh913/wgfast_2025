@@ -39,6 +39,7 @@ If you have not created any repositories yet, you will see a page similar to thi
 ```{image} images/GitHub_new_repo1.png
 :alt:
 :align: center
+:scale: 50
 ```
 
 &nbsp;

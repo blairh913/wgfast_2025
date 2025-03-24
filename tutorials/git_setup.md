@@ -1,11 +1,67 @@
 # 2. Git Setup
 
-GUI - _Graphical User Interface_  
+```{image} images/Git-Icon-1788C.png
+:alt: Git Logo
+:width: 100px
+:align: center
+```
 
 ```{note} If you use MacOS or Windows and prefer to work in a GUI (not the terminal), download and install [GitHub Desktop](https://desktop.github.com/download/). GitHub Desktop is not yet supported on Linux.
 ```
 
+GUI - Graphical User Interface
+
+&nbsp;
+
 How you download and install Git depends on your operating system.
+
+- MacOS  
+Choose one:
+
+**GUI** - Download and install [GitHub Desktop](https://desktop.github.com/download/)  
+**Terminal** - From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) section of _Pro Git_
+
+```{image} images/GitInstall_MacOS_1.png
+:alt: 
+:scale: 75
+:align: center
+```
+
+&nbsp;
+
+```{image} images/GitInstall_MacOS_2.png
+:alt: 
+:scale: 75
+:align: center
+```
+
+&nbsp;
+
+- Windows  
+Choose one:
+
+**GUI** - Download and install [GitHub Desktop](https://desktop.github.com/download/)
+
+**Terminal** _Git BASH_ - Download and and install [Git for Windows](https://gitforwindows.org/). Git BASH is a terminal emulator that comes with Git for Windows. Although Git for Windows is not maintained by the Git developers, they recommend using it.
+
+**Terminal** _PowerShell_
+
+```{warning} This is not recommended. Too many things to download and install. Unless you are a die hard Windows user and a PowerShell Wizard, do not bother. Also, we have not tried this setup and cannot help troubleshoot.
+```
+
+1. Download and install the [WinGet tool](https://learn.microsoft.com/en-us/windows/package-manager/winget/).
+
+In the PowerShell command line, type:
+
+```
+winget install --id Git.Git -e --source winget
+```
+
+2. Download and install [posh-Git](https://github.com/dahlbyk/posh-git)
+
+Please read the posh-Git README file and follow the instructions.
+
+&nbsp;
 
 - Linux  
 From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) section of _Pro Git_  
@@ -16,39 +72,11 @@ From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getti
 :align: center
 ```
 
-<br>
+&nbsp;
 
-- MacOS  
-GUI - Download and install [GitHub Desktop](https://desktop.github.com/download/)  
-Terminal - From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) section of _Pro Git_
+## GitHub Desktop - linking with Git
 
-```{image} images/GitInstall_MacOS_1.png
-:alt: 
-:scale: 75
-:align: center
-```
 
-<br>
-
-```{image} images/GitInstall_MacOS_2.png
-:alt: 
-:scale: 75
-:align: center
-```
-
-<br>
-
-- Windows  
-
-There are several ways to download and install Git on a Windows machine:  
-
-GUI - Download and install [GitHub Desktop](https://desktop.github.com/download/)
-
-Terminal _Git BASH_ - Download and and install [Git for Windows](https://gitforwindows.org/). Git BASH is a terminal emulator that comes with Git for Windows. Although Git for Windows is not maintained by Git... FINISH ME!
-
-Terminal _PowerShell_ - Download directly from the [Git/Download for Windows](https://git-scm.com/downloads/win) website and run the executable. To run Git from PowerShell, 
-
-<br>  
 
 ## Configure Git - Terminal addition
 
