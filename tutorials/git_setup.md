@@ -1,4 +1,4 @@
-# 2. Git Setup
+# 3. Git Setup
 
 ```{image} images/Git-Icon-1788C.png
 :alt: Git Logo
@@ -6,7 +6,7 @@
 :align: center
 ```
 
-```{note} If you use MacOS or Windows and prefer to work in a GUI (not the terminal), download and install [GitHub Desktop](https://desktop.github.com/download/). GitHub Desktop is not yet supported on Linux.
+```{note} If you use MacOS or Windows and prefer to work in a GUI, download and install [GitHub Desktop](https://desktop.github.com/download/). GitHub Desktop is not yet supported on Linux.
 ```
 
 GUI - Graphical User Interface
@@ -46,7 +46,7 @@ Choose one:
 
 **Terminal** _PowerShell_
 
-```{warning} This is not recommended. Too many things to download and install. Unless you are a die hard Windows user and a PowerShell Wizard, do not bother. Also, we have not tried this setup and cannot help troubleshoot.
+```{warning} This is not recommended. There are too many things to download and install. Unless you are a die hard Windows user and a PowerShell Wizard, do not bother. Also, we have not tried this setup and cannot help troubleshoot.
 ```
 
 1. Download and install the [WinGet tool](https://learn.microsoft.com/en-us/windows/package-manager/winget/).
@@ -73,10 +73,6 @@ From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getti
 ```
 
 &nbsp;
-
-## GitHub Desktop - linking with Git
-
-
 
 ## Configure Git - Terminal addition
 
