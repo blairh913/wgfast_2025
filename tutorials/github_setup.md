@@ -1,5 +1,19 @@
 # 1. GitHub Setup
 
+```{image} images/Octocat.png
+:alt: GitHub Octocat
+:width: 100px
+:align: center
+```  
+
+## What is GitHub?
+
+[GitHub](https://github.com/) is a web-based hosting service that manages Git repositories. GitHub **is not** Git. GitHub allows you to collaborate on the work in Git repositories.
+
+GitHub is one of the most popular hosting platforms for version control systems, but there are others including [GitLab](https://gitlab.com/) and [Bitbucket](https://bitbucket.org/).
+
+&nbsp;
+
 ## Create a [GitHub](https://github.com) account if you do not already have one
 
 - Go to <https://github.com> and sign up for an account
@@ -18,9 +32,13 @@
 
 - Sign in
 
-After you sign in, you will land on your GitHub Dashboard/Home page. Feel free to explore the tutorials. When you follow people or repositories, their updates will show up here.
+After you sign in, you will land on your GitHub Dashboard/Home page. Feel free to explore the tutorials. When you follow people or repositories, their updates will show up on your Dashboard.
+
+&nbsp;
 
 ## Add your profile
+
+Let people know who your are!
 
 To to add your profile, click on your icon in the upper right corner
 
@@ -61,7 +79,7 @@ You account settings allow you to manage your personal information, security, ac
 
 Public Profile: Customize your profile with an avatar, name, bio, location, and other details.
 
-Appearance: Choose your preferred theme, emoji skin tone, tab size preference, and Markdown editor front preference
+Appearance: Choose your preferred theme, emoji skin tone, tab size preference, and Markdown editor front preference.
 
 Notifications: Configure the types of activity on GitHub that you want to receive notifications for and how you want these updates delivered.
 

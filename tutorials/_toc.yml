@@ -11,6 +11,7 @@ parts:
     chapters:
     - file: pre_workshop_setup # Pre-workshop notes
     - file: github_setup
+    - file: github_desktop_setup
     - file: git_setup
     #- file:    #micromamba setup
     #- file:    #jupyter setup
