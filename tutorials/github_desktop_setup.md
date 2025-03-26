@@ -7,7 +7,7 @@ If you prefer to use a Graphical User Interface (GUI) instead of the command lin
 
 &nbsp;
 
-```{image} images/Github-desktop-logo-symbol.svg.png
+```{image} images/Github-desktop-logo-symbol.png
 :alt: GitHub Desktop icon
 :width: 100px
 :align: center
@@ -21,7 +21,6 @@ There are a few advanced commands in Git that are not available in GitHub Deskto
 
 ```{image} images/GH-desktop-image.png
 :alt: GitHub Desktop icon
-:scale: 100
 :align: center
 ```  
 
@@ -31,6 +30,5 @@ The GitHub Desktop [documentation](https://docs.github.com/en/desktop/overview/g
 
 ```{image} images/GH-desktop-overview.png
 :alt: GitHub Desktop icon
-:scale: 100
 :align: center
 ```
