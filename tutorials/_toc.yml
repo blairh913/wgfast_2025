@@ -13,7 +13,7 @@ parts:
     - file: github_setup
     - file: github_desktop_setup
     - file: git_setup
-    #- file:    #micromamba setup
+    #- file:    #mini-forge setup
     #- file:    #jupyter setup
   - caption: Agenda
     chapters:
