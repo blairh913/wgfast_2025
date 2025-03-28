@@ -16,7 +16,7 @@ The power of Git comes from its distributed version control system (DVCS). Unlik
 
 We are only going to use a few core commands in Git, but if you want to dive deeper into Git and DVCSs, there are many tutorials online, including [videos, books, and external links](https://git-scm.com/doc) on the Git website. The _Getting Started_ and _Git Basics_ chapters from the [Pro Git](https://git-scm.com/book/en/v2) book (free online) is also a good place to start.
 
-```{tip} If you do not want to use Git commands in a terminal, you can use [GitHub Desktop](https://desktop.github.com/download/). GitHub Desktop is a GUI that simplifies your Git workflows, and it installs the latest version of Git if you do not already have it installed.
+```{tip} If you do not want to use Git commands in a terminal, you can use [GitHub Desktop](https://desktop.github.com/download/). GitHub Desktop is a Graphical User Interface (GUI) that simplifies your Git workflows, and it installs the latest version of Git if you do not already have it installed.
 ```
 
 ---
