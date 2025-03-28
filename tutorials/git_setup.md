@@ -118,5 +118,5 @@ git config --global user.email johndoe@example.com
 
 Replace _johndoe@example.com_ with the email linked to your GitHub account.
 
-```{note}Your Git username and GitHub username do not have to match, but your _Git user email has to be linked to your GitHub account_.
+```{note} Your Git username and GitHub username do not have to match, but your _Git user email has to be linked to your GitHub account_.
 ```
