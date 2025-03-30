@@ -7,9 +7,8 @@ parts:
   - caption: Overview  # overall framework
     chapters:
     - file: overview
-  - caption: Agenda
-    chapters:
-    - file: agenda_new
+  - chapters:
+    - file: agenda
   - caption: Pre-workshop Setup
     chapters:
     - file: pre_workshop_setup # Pre-workshop notes
@@ -26,7 +25,7 @@ parts:
     chapters:
     - file: notebooks
     # - file: markdown-notebooks2
-  - caption: Echopype tutorials  # echopype tutorials
+  - caption: Open-source Python tools  # echopype tutorials
     chapters:
     - file: markdown-notebooks
     # - file: markdown-notebooks2
