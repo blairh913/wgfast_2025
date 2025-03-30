@@ -7,6 +7,9 @@ parts:
   - caption: Overview  # overall framework
     chapters:
     - file: overview
+  - caption: Agenda
+    chapters:
+    - file: agenda
   - caption: Pre-workshop Setup
     chapters:
     - file: pre_workshop_setup # Pre-workshop notes
@@ -15,9 +18,6 @@ parts:
     - file: git_setup
     #- file:    #mini-forge setup
     #- file:    #jupyter setup
-  - caption: Agenda
-    chapters:
-    - file: agenda
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
     - file: github_intro
