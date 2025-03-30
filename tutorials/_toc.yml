@@ -21,11 +21,16 @@ parts:
     chapters:
     - file: github_intro
     - file: git_intro
-  - caption: Python tutorials  # python tutorials
+  - caption: Python environments and Jupyter  # python, jupyter
     chapters:
     - file: notebooks
-    # - file: markdown-notebooks2
+    # - file:     # python setup
+    # - file:     # computing environment
+    # - file:     # jupyter
   - caption: Open-source Python tools  # echopype tutorials
     chapters:
     - file: markdown-notebooks
-    # - file: markdown-notebooks2
+    # - file:     # intro
+    # - file:     # xarray + hvplot notebook
+    # - file:     # echopype notebook
+    # - file:     # reproducible research slides
