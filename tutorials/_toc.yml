@@ -4,11 +4,8 @@
 format: jb-book
 root: landing
 parts:
-  - caption: Overview  # overall framework
-    chapters:
-    - file: overview
-  - chapters:
-    - file: agenda
+  - file: overview
+  - file: agenda
   - caption: Pre-workshop Setup
     chapters:
     - file: pre_workshop_setup # Pre-workshop notes
