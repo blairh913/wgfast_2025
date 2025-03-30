@@ -17,7 +17,7 @@ parts:
     #- file:    #jupyter setup
   - caption: Agenda
     chapters:
-    - file: Agenda
+    - file: agenda
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
     - file: github_intro
