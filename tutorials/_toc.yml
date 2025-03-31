@@ -22,15 +22,17 @@ parts:
     chapters:
     - file: github_intro
     - file: git_intro
-  - caption: Python and the machine that goes ping  # python tutorials
+  - caption: Python tutorials  # python tutorials
     chapters:
     - file: python_bkg #history, background and zen of python
-    - file: python_why #Python comparison with R and Matlab
-    - file: python_install #install python, conda, mamba, echopype with miniforge
+    - file: python_install #install miniforge - minimal mamba, conda, python
+    - file: python_pkgmgmt #environments and package management
+    - file: python # maths, built in file structures
+    - file: python_packages #packages classes, functions
     #- file: python_environments #environments
-    - file: python # classes, functions
     #- file: python_notebooks #jupyter
     #- file: python_package #writing and pushing a python package
+    #- file: python_vs #Python comparison with R and Matlab
     #- file: python_plotting #plotting interactively
   - caption: Echopype tutorials  # echopype tutorials
     chapters:

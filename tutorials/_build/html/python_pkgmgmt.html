@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Package managers and environments &#8212; WGFAST 2025 workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_pkgmgmt';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python (very basic) Basics" href="python.html" />
+    <link rel="prev" title="Minimal install conda, mamba, Python" href="python_install.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Markdown Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pre-workshop Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pre_workshop_setup.html">Before the workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_setup.html">1. GitHub Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_desktop_setup.html">2. GitHub Desktop Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_setup.html">3. Git Setup</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Agenda</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Agenda.html">Agenda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Git/GitHub tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">GitHub Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_intro.html">Git Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_bkg.html">Python - and the machine that goes ping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_install.html">Minimal install conda, mamba, Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Package managers and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python (very basic) Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_packages.html">Python packages</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Echopype tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/main/tutorials/python_pkgmgmt.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpython_pkgmgmt.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python_pkgmgmt.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Package managers and environments</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environments">Python environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-environments-and-why-should-we-use-them">What are environments and why should we use them?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environmnents">Using environmnents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-new-packages-and-other-useful-mamba-commands">Installing new packages and other useful mamba commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-updating-removing-packages">Installing, updating, removing packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up-packages">Cleaning up packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-mamba-configuration">Checking mamba configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-packages-in-python">Loading packages in Python</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="package-managers-and-environments">
+<h1>Package managers and environments<a class="headerlink" href="#package-managers-and-environments" title="Permalink to this heading">#</a></h1>
+<section id="python-packages">
+<h2>Python packages<a class="headerlink" href="#python-packages" title="Permalink to this heading">#</a></h2>
+<p>Python can be described as charged with batteries, to say that it already comes packed with a number of modules (functions and classes) to get you started. Still in every day use of Python, you will need additional external functionality which in Python is commonly imported through packages. Packages are the equivalent to libraries in R and can be compared to toolboxes in Matlab.</p>
+<p>A Python package contains one or more modules. A module is a <em>.py</em> file that contains reusable code, typically functions or models.<br />
+Packages can be seen as analoguous to libraries in R and very similar to toolboxes in Matlab.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>What are dependency issues?</strong><br />
+Dependency issues occur when multiple packages depend on different version of the same package. Only one single version of package is allowed to be installed in a Python environment. FInding a solution to this issue can be complicated.<br />
+For example package A might have been written based on version 1.2 of package B. Now package B releases an update where a function that was called <code class="docutils literal notranslate"><span class="pre">wave_number()</span></code> is now kalled <code class="docutils literal notranslate"><span class="pre">k()</span></code>. If package A is not updated and you only install the new version of package B, package A won’t work properly anymore. If you also need package C that was written using the k() function form package B, you can’t simply downgrade package B, otherwise package C won’t work anymore.</p>
+</div>
+</section>
+<section id="python-environments">
+<h2>Python environments<a class="headerlink" href="#python-environments" title="Permalink to this heading">#</a></h2>
+<section id="what-are-environments-and-why-should-we-use-them">
+<h3>What are environments and why should we use them?<a class="headerlink" href="#what-are-environments-and-why-should-we-use-them" title="Permalink to this heading">#</a></h3>
+<p>A Python environment can be seen as a separate workspace where you can run Python programs without interfering with other projects. It helps keeping things organized by managing different versions of Python and packages needed for each project. For example, if one project needs Python 3.8 and another needs Python 3.10, you can create separate environments for each, so they don’t mix and cause problems. Tools like <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>, <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>, and <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">conda</a> or <a class="reference external" href="https://mamba.readthedocs.io/en/latest/">mamba</a> help create and manage these environments easily.</p>
+<p>Uisng environments has a number of benefits:</p>
+<ul class="simple">
+<li><p><strong>Avoiding Dependency Conflicts</strong><br />
+Different projects may require different versions of libraries. A Python environment ensures that each project uses the correct versions without conflicts.</p></li>
+<li><p><strong>Keeping Projects Organized</strong><br />
+Each environment acts as a separate workspace, so your global Python installation remains clean and uncluttered.</p></li>
+<li><p><strong>Working with Different Python Versions</strong><br />
+You can create environments with different Python versions, which is useful if one project needs Python &lt;3.8 while another needs Python &gt;3.10.</p></li>
+<li><p><strong>Easier Collaboration</strong><br />
+When sharing projects, you can provide a list of dependencies (requirements.txt for pip or environment.yml for conda or mamba), allowing others to recreate the exact environment.</p></li>
+<li><p><strong>Experimenting Without Risk</strong><br />
+You can safely test new libraries or code changes in a separate environment without affecting your main setup.</p></li>
+<li><p><strong>Better Reproducibility</strong><br />
+If you revisit a project months later, having an isolated environment ensures it still runs as expected without issues caused by updated or missing dependencies.</p></li>
+<li><p><strong>Security Benefits</strong><br />
+Running code in a virtual environment can prevent accidental modifications to system-wide files and protect your system from potential risks.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Here we will focus on the use of mamba. <code class="docutils literal notranslate"><span class="pre">conda</span></code>probably remains the most popular package manager but there are several benefits that <code class="docutils literal notranslate"><span class="pre">mamba</span></code> has compared to <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
+<ul class="simple">
+<li><p>Much faster than Conda (especially for package resolution)</p></li>
+<li><p>Uses parallel downloads, making installations and updates quicker</p></li>
+<li><p>Fully compatible with Conda environments and packages.</p></li>
+</ul>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>R</strong><br />
+In R is is common practice to start new <em>Projects</em> for each project. R Projects are a great way to magae paths and file dependencies, but they lack package management.<br />
+Virtual environments like they are commonly used in Python exist in R as well, through <a class="reference external" href="https://posit.co/blog/renv-project-environments-for-r/">renv</a>. <code class="docutils literal notranslate"><span class="pre">renv</span></code> manages package versions and dependencies separately for each project. This ensures that the code will work even after a long period of time and enhance compatibility with the systems of colleagues.</p>
+</div>
+</section>
+<section id="using-environmnents">
+<h3>Using environmnents<a class="headerlink" href="#using-environmnents" title="Permalink to this heading">#</a></h3>
+<p>If you decide to use <code class="docutils literal notranslate"><span class="pre">conda</span></code> instead of <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, you can replace <code class="docutils literal notranslate"><span class="pre">mamba</span></code> by <code class="docutils literal notranslate"><span class="pre">conda</span></code> in all commands listed here.</p>
+<ol class="arabic">
+<li><p>Creating a new environment</p>
+<p>To create a new environment (called <code class="docutils literal notranslate"><span class="pre">my_env</span></code>) with a specific Python version (here 3.12) we use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba create --name my_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+</pre></div>
+</div>
+<p>If we don’t specifiy the python version the environment will use the default version (currently 3.9).<br />
+We can install specific packages while creating the environment (note more packages can be installed at a later stage):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba create --name my_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12 numpy pandas xarray
+</pre></div>
+</div>
+<p>Packages are simply added to the end of the command, separated by spaces.<br />
+<code class="docutils literal notranslate"><span class="pre">mamba</span></code> will make sure that all dependencies of the different packages are installed and are compatible. If for example a package in the list or a dependecy would not be compatible with the wanted Python verison, an error message would be the result and the environment would not be created.</p>
+</li>
+<li><p>Activating an environment</p>
+<p>To start using an environment we use <code class="docutils literal notranslate"><span class="pre">activate</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba activate my_env
+</pre></div>
+</div>
+</li>
+<li><p>Deavtivating an environment</p>
+<p>To stop using an environment, we use <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> (no need to add the environment name at the end):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba deactivate
+</pre></div>
+</div>
+</li>
+<li><p>Listing all available environments</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba env list
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba info --envs
+</pre></div>
+</div>
+</li>
+<li><p>Installing packages in an environmnent</p>
+<p>If the environment in which the package should be installed is activated:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba install echopype
+</pre></div>
+</div>
+<p>alternatively, the specific environmnent can be defined:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba install --name my_env echopype
+</pre></div>
+</div>
+</li>
+<li><p>Removing a Package from an Environment</p>
+<p>To remove a package we use the <code class="docutils literal notranslate"><span class="pre">remove</span></code>command (here we remove the numpy package):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba remove numpy
+</pre></div>
+</div>
+</li>
+<li><p>Deleting an environment</p>
+<p>To completely remove an environment and all its packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba env remove --name my_env
+</pre></div>
+</div>
+</li>
+<li><p>Exporting an environment (for Sharing)</p>
+<p>To save all installed packages into a file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba env <span class="nb">export</span> &gt; environment.yml
+</pre></div>
+</div>
+<p>This file can be shared with others to recreate the environment.</p>
+</li>
+<li><p>Recreating an environment from a File</p>
+<p>To create an exact copy of an environment from an environment.yml file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba env create --file environment.yml
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="installing-new-packages-and-other-useful-mamba-commands">
+<h2>Installing new packages and other useful mamba commands<a class="headerlink" href="#installing-new-packages-and-other-useful-mamba-commands" title="Permalink to this heading">#</a></h2>
+<section id="installing-updating-removing-packages">
+<h3>Installing, updating, removing packages<a class="headerlink" href="#installing-updating-removing-packages" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>mamba</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>-</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mamba install package_name</p></td>
+<td><p>Installs a package</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mamba remove package_name</p></td>
+<td><p>Removes a package</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>mamba update package_name</p></td>
+<td><p>Update a package</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mamba update –all</p></td>
+<td><p>update all packages in the active environment</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>mamba list</p></td>
+<td><p>list all installed packages</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mamba list –name my_env</p></td>
+<td><p>list all packages in a specific environmnent</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cleaning-up-packages">
+<h3>Cleaning up packages<a class="headerlink" href="#cleaning-up-packages" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>mamba</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>-</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mamba clean –all</p></td>
+<td><p>Remove unneccessary package files</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mamba clean –packages</p></td>
+<td><p>Remove unsused package versions</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>mamba clean –tarballs</p></td>
+<td><p>Remove temporary package files</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="checking-mamba-configuration">
+<h3>Checking mamba configuration<a class="headerlink" href="#checking-mamba-configuration" title="Permalink to this heading">#</a></h3>
+<p>View mamba settings:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba config --show
+</pre></div>
+</div>
+<p>add channel for package retrieval (example adds the conda-forge channel):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba config --add channels conda-forge
+</pre></div>
+</div>
+</section>
+</section>
+<section id="loading-packages-in-python">
+<h2>Loading packages in Python<a class="headerlink" href="#loading-packages-in-python" title="Permalink to this heading">#</a></h2>
+<p>Once packages are installed in an environment, they can be imported in a Python script with the <code class="docutils literal notranslate"><span class="pre">import</span></code> command. We will use the <code class="docutils literal notranslate"><span class="pre">math</span></code> package in the examples below. Functions from within the package can be accesses with dot <code class="docutils literal notranslate"><span class="pre">.</span></code>notation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">pi</span>  <span class="c1">#output: 3.14159....</span>
+</pre></div>
+</div>
+<p>we can give packages an alias usign <code class="docutils literal notranslate"><span class="pre">as</span></code> (here <code class="docutils literal notranslate"><span class="pre">m</span></code>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="n">m</span><span class="o">.</span><span class="n">pi</span> <span class="c1">#output: 3.14159....</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is common practice to import some package using an alias, popular examples include (these aliases are not required but consistent with industry standards and imporve readibility):</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package name</p></th>
+<th class="head"><p>alias</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>numpy</p></td>
+<td><p>np</p></td>
+</tr>
+<tr class="row-odd"><td><p>pandas</p></td>
+<td><p>pd</p></td>
+</tr>
+<tr class="row-even"><td><p>xarray</p></td>
+<td><p>xr</p></td>
+</tr>
+<tr class="row-odd"><td><p>matplotlib.pyplot</p></td>
+<td><p>plt</p></td>
+</tr>
+<tr class="row-even"><td><p>seaborn</p></td>
+<td><p>sns</p></td>
+</tr>
+<tr class="row-odd"><td><p>scikit-learn</p></td>
+<td><p>sklearn</p></td>
+</tr>
+<tr class="row-even"><td><p>echopype</p></td>
+<td><p>ep</p></td>
+</tr>
+<tr class="row-odd"><td><p>datetime</p></td>
+<td><p>dt</p></td>
+</tr>
+<tr class="row-even"><td><p>statistics</p></td>
+<td><p>stats</p></td>
+</tr>
+<tr class="row-odd"><td><p>BeautifulSoup</p></td>
+<td><p>bs4</p></td>
+</tr>
+<tr class="row-even"><td><p>itertools</p></td>
+<td><p>it</p></td>
+</tr>
+<tr class="row-odd"><td><p>collections</p></td>
+<td><p>col</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can import specific functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">sqrt</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="c1">#output: 8.0</span>
+</pre></div>
+</div>
+<p>When importing specific functions, we do not use the dot notations anymore but can call the functions directly.</p>
+<p>we can also load all funcitons from one packake using <code class="docutils literal notranslate"><span class="pre">*</span></code>, it is considered good practice to only import what you need though:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">sqrt</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>  <span class="c1">#output: 8.0</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>Comparing loading packages in R and Python</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Python</p></th>
+<th class="head"><p>R</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>import packages</p></td>
+<td><p>load libraries</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">packagename</span></code> or with an alias <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">packagename</span> <span class="pre">as</span> <span class="pre">pkg</span></code>, to import specific functions from a package we can use <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">packagename</span> <span class="pre">import</span> <span class="pre">function</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">library(packagename)</span></code> <br> In R libraries need to be loaded to allow usage of specialised functions. Typically in R you import entire libraries, but since R 4.0 you can also import specific functions through <code class="docutils literal notranslate"><span class="pre">library(packagename,</span> <span class="pre">include.only=c(&quot;function1&quot;,</span> <span class="pre">function2&quot;))</span></code> similarly, to avoid conflicts between different libraries funcitons can be exluded through <code class="docutils literal notranslate"><span class="pre">library(packagename,</span> <span class="pre">exclude=</span> <span class="pre">c(&quot;function3&quot;,</span> <span class="pre">&quot;function4&quot;))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Specific examples:</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> <br>This imports the numpy package and all numpy functions can be called through the alias <code class="docutils literal notranslate"><span class="pre">np</span></code> using <code class="docutils literal notranslate"><span class="pre">np.function()</span></code> <br><br> <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">echopype</span> <span class="pre">as</span> <span class="pre">ep</span></code> this imports the echopype package awith the alias <code class="docutils literal notranslate"><span class="pre">ep</span></code> <br> <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">echopype</span> <span class="pre">import</span> <span class="pre">open_raw</span></code> this imports only the <code class="docutils literal notranslate"><span class="pre">open_raw()</span></code>function from <code class="docutils literal notranslate"><span class="pre">echopype</span></code></p></td>
+<td><p><br> <br> <code class="docutils literal notranslate"><span class="pre">library(ggplot2)</span></code> this imports one of the most popular graphics libraries in R. Functions from the library can be used by just calling the function (for example <code class="docutils literal notranslate"><span class="pre">ggplot()</span></code> or by specifying the package and the function <code class="docutils literal notranslate"><span class="pre">ggplot2::ggplot()</span></code> <br><br> <code class="docutils literal notranslate"><span class="pre">library(dplyr,</span> <span class="pre">include.only=c(&quot;filter&quot;,</span> <span class="pre">&quot;select&quot;))</span></code> imports only the <code class="docutils literal notranslate"><span class="pre">filter</span></code> and <code class="docutils literal notranslate"><span class="pre">select</span></code>functions from the <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>package. <code class="docutils literal notranslate"><span class="pre">library(dplyr,</span> <span class="pre">exclude=c(&quot;mutate&quot;,</span> <span class="pre">&quot;lag&quot;))</span></code>imports all functions from the<code class="docutils literal notranslate"><span class="pre">dplyr</span></code>package except for the<code class="docutils literal notranslate"><span class="pre">mutate</span></code>and<code class="docutils literal notranslate"><span class="pre">lag</span></code> functions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_install.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Minimal install conda, mamba, Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python (very basic) Basics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environments">Python environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-environments-and-why-should-we-use-them">What are environments and why should we use them?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-environmnents">Using environmnents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-new-packages-and-other-useful-mamba-commands">Installing new packages and other useful mamba commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-updating-removing-packages">Installing, updating, removing packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up-packages">Cleaning up packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-mamba-configuration">Checking mamba configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-packages-in-python">Loading packages in Python</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wu-Jung Lee, Sven Gastauer, Erin LaBrecque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
