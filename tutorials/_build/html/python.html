@@ -392,7 +392,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation">Indentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-docstrings">Comments and docstrings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docsctring">Docsctring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-docstring-and-when-comments">When to use docstring and when comments?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
@@ -471,10 +476,13 @@ This might feel like a nuissance at first, but after a while it will feel natura
 </div>
 </div>
 </section>
+<section id="comments-and-docstrings">
+<h2>Comments and docstrings<a class="headerlink" href="#comments-and-docstrings" title="Permalink to this heading">#</a></h2>
+<p>Code you be easy to understand for anyone who picks it up. Therefore commenting is very important.<br />
+Commenting in Pyhton can be done on a <a class="reference external" href="https://peps.python.org/pep-0257/">module-level docstrings</a> (describing functions)  or as inline expalanations, what is happenign in the code.</p>
 <section id="commenting">
-<h2>Commenting<a class="headerlink" href="#commenting" title="Permalink to this heading">#</a></h2>
-<p>Code you be easy to understand for anyone who picks it up. Therefore commenting is very important. commenting in Pyhton can be done on a <a class="reference external" href="https://peps.python.org/pep-0257/">module-level docstrings</a> (describing functions)  or as inline expalanations, what is happenign in the code.<br />
-Whatever you wrtie after <code class="docutils literal notranslate"><span class="pre">#</span></code> will be considered a comment and will be ignored during code execution. Example:</p>
+<h3>Commenting<a class="headerlink" href="#commenting" title="Permalink to this heading">#</a></h3>
+<p>Whatever you wrtie after <code class="docutils literal notranslate"><span class="pre">#</span></code> will be considered a comment and will be ignored during code execution. Example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code will run, but nothing happend, because this is a comment</span>
@@ -482,6 +490,120 @@ Whatever you wrtie after <code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </div>
+<p>Python unfortunatley only supports single line commenting (unlike other languarges like Jave for example where everyting between /* and *\ is considered a comment or in Matlab where %{ and }% allows for multiline commenting). One workaround is to start multiple lines with <code class="docutils literal notranslate"><span class="pre">#</span></code> or to use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is a pseudo  multi-line comment</span>
+<span class="sd">In reality it is only a string</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="docsctring">
+<h3>Docsctring<a class="headerlink" href="#docsctring" title="Permalink to this heading">#</a></h3>
+<p>Doscstrings are multi-line strings, tyoically used to document and describe functions, classes, and modules. By convention they are places as first statement inside code blocks and can be called through <code class="docutils literal notranslate"><span class="pre">funciton.__doc__</span></code> or through <code class="docutils literal notranslate"><span class="pre">help(function)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave_length</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the wavelength of a wave</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    c (int or float): Sound velocity (m/s)</span>
+<span class="sd">    f (int or float): Frequency (Hz)</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">    float: the wave length in m</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">c</span> <span class="o">/</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can read the documentaiton by calling:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wave_length</span><span class="o">.</span><span class="vm">__doc__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\n    Returns the wavelength of a wave\n\n    Parameters:\n    c (int or float): Sound velocity (m/s)\n    f (int or float): Frequency (Hz)\n\n    Return:\n    float: the wave length in m\n    &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or by using the help function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">wave_length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function wave_length in module __main__:
+
+wave_length(c, f)
+    Returns the wavelength of a wave
+
+    Parameters:
+    c (int or float): Sound velocity (m/s)
+    f (int or float): Frequency (Hz)
+
+    Return:
+    float: the wave length in m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-to-use-docstring-and-when-comments">
+<h3>When to use docstring and when comments?<a class="headerlink" href="#when-to-use-docstring-and-when-comments" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Placement</p></th>
+<th class="head"><p>Execution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Comments (#)</p></td>
+<td><p>Explain a specific part of the code</p></td>
+<td><p>Anywhere in the code</p></td>
+<td><p>Ignored by Python</p></td>
+</tr>
+<tr class="row-odd"><td><p>Docstrings (“”” “””)</p></td>
+<td><p>Document and describe functions, classes or modules</p></td>
+<td><p>Always at the beginning of a class, function or module</p></td>
+<td><p>Stored as metadata (.<strong>doc</strong>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>R</strong><br />
+Docstrings are somewhat analogous to Roxygen documentaiton in R. The recommended oconvention to document and describe function in R is by using <code class="docutils literal notranslate"><span class="pre">#'</span> </code>. Similarly to the <code class="docutils literal notranslate"><span class="pre">help()</span></code> command in Python, in R ``?function``` will provide the description.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#&#39; Returns the wavelength of a wave</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @param c float or int,  Sound velocity (m/s) </span>
+<span class="c1">#&#39; @param f float or int, Frequency in Hz </span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @return</span>
+<span class="c1">#&#39; @export</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @examples</span>
+<span class="c1">#&#39; wave_length(1500, 38000)</span>
+<span class="n">wave_length</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">f</span><span class="p">){</span>
+    <span class="n">return</span> <span class="n">c</span><span class="o">/</span><span class="n">f</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h2>
@@ -983,7 +1105,12 @@ nan
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation">Indentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-docstrings">Comments and docstrings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docsctring">Docsctring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-docstring-and-when-comments">When to use docstring and when comments?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
