@@ -1,0 +1,1177 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Python (very basic) Basics &#8212; WGFAST 2025 workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python packages" href="python_packages.html" />
+    <link rel="prev" title="Package managers and environments" href="python_pkgmgmt.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Markdown Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pre-workshop Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pre_workshop_setup.html">Before the workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_setup.html">1. GitHub Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_desktop_setup.html">2. GitHub Desktop Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_setup.html">3. Git Setup</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Agenda</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Agenda.html">Agenda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Git/GitHub tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">GitHub Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_intro.html">Git Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_bkg.html">Python - and the machine that goes ping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_install.html">Minimal install conda, mamba, Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_pkgmgmt.html">Package managers and environments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python (very basic) Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_packages.html">Python packages</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Echopype tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/main/tutorials/python.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpython.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python (very basic) Basics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation">Indentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-docstrings">Comments and docstrings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docsctring">Docsctring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-docstring-and-when-comments">When to use docstring and when comments?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-core-data-structure">Python core data structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-very-basic-basics">
+<h1>Python (very basic) Basics<a class="headerlink" href="#python-very-basic-basics" title="Permalink to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Python Starts counting at 0 unlike R or Matlab which start at 1</p>
+</div>
+<p>Python code can be directly executed from the command line (no need to compile) or by creating a text file with a *.py extension.</p>
+<p><img alt="Python Console" src="_images/python_console.png" /></p>
+<section id="indentation">
+<h2>Indentation<a class="headerlink" href="#indentation" title="Permalink to this heading">#</a></h2>
+<p>A key difference of Python compared to most other programming languages is that in Python indentation matters (the spaces at the beginning of every line of code). Python uses indentation to deliminate blocks of code. The number of spaces you use is up to you but you need to be consistent. Commonly 4 spaces are used.<br />
+<em>Example:</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the first line of the code&quot;</span><span class="p">)</span> 
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here we add an if statement&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is &lt; 5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you were to skip the indentation, Python will throw an error:</p>
+<p><code class="docutils literal notranslate"><span class="pre">IndentationError:</span> <span class="pre">expected</span> <span class="pre">an</span> <span class="pre">indented</span> <span class="pre">block</span></code><br />
+This might feel like a nuissance at first, but after a while it will feel natural and keep your code organised.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="rubric">R - {}</p>
+<p>In R, a consistent use of indentation will make code much easier to read but is not strictly necessary. Functions, loops and statemtent are delimited by <code class="docutils literal notranslate"><span class="pre">{}</span></code>.<br />
+<em>Example:</em></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;This is the first line of the code&quot;</span><span class="p">)</span> 
+<span class="n">a</span> <span class="o">=</span> <span class="m">10</span> 
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Here we add an if statement&quot;</span><span class="p">)</span>
+<span class="nf">if </span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="m">5</span><span class="p">){</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">}</span><span class="n">else</span><span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is &lt; 5&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="rubric">Matlab - end</p>
+<p>In Matlab, a consistent use of indentation will make code much easier to read but is not strictly necessary. Ending each line with <code class="docutils literal notranslate"><span class="pre">;</span></code> will prevent printing the result to the console. Functions loops and statements are closed by <code class="docutils literal notranslate"><span class="pre">end</span></code>.<br />
+<strong>Example</strong></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">&quot;This is the first line of the code&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="nb">disp</span><span class="p">(</span><span class="s">&quot;Here we add an if statement&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nb">disp</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="nb">disp</span><span class="p">(</span><span class="s">&quot;a is &lt; 5&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="comments-and-docstrings">
+<h2>Comments and docstrings<a class="headerlink" href="#comments-and-docstrings" title="Permalink to this heading">#</a></h2>
+<p>Code you be easy to understand for anyone who picks it up. Therefore commenting is very important.<br />
+Commenting in Pyhton can be done on a <a class="reference external" href="https://peps.python.org/pep-0257/">module-level docstrings</a> (describing functions)  or as inline expalanations, what is happenign in the code.</p>
+<section id="commenting">
+<h3>Commenting<a class="headerlink" href="#commenting" title="Permalink to this heading">#</a></h3>
+<p>Whatever you wrtie after <code class="docutils literal notranslate"><span class="pre">#</span></code> will be considered a comment and will be ignored during code execution. Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code will run, but nothing happend, because this is a comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python unfortunatley only supports single line commenting (unlike other languarges like Jave for example where everyting between /* and *\ is considered a comment or in Matlab where %{ and }% allows for multiline commenting). One workaround is to start multiple lines with <code class="docutils literal notranslate"><span class="pre">#</span></code> or to use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is a pseudo  multi-line comment</span>
+<span class="sd">In reality it is only a string</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="docsctring">
+<h3>Docsctring<a class="headerlink" href="#docsctring" title="Permalink to this heading">#</a></h3>
+<p>Doscstrings are multi-line strings, tyoically used to document and describe functions, classes, and modules. By convention they are places as first statement inside code blocks and can be called through <code class="docutils literal notranslate"><span class="pre">funciton.__doc__</span></code> or through <code class="docutils literal notranslate"><span class="pre">help(function)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave_length</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the wavelength of a wave</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    c (int or float): Sound velocity (m/s)</span>
+<span class="sd">    f (int or float): Frequency (Hz)</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">    float: the wave length in m</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">c</span> <span class="o">/</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can read the documentaiton by calling:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wave_length</span><span class="o">.</span><span class="vm">__doc__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\n    Returns the wavelength of a wave\n\n    Parameters:\n    c (int or float): Sound velocity (m/s)\n    f (int or float): Frequency (Hz)\n\n    Return:\n    float: the wave length in m\n    &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or by using the help function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">wave_length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function wave_length in module __main__:
+
+wave_length(c, f)
+    Returns the wavelength of a wave
+
+    Parameters:
+    c (int or float): Sound velocity (m/s)
+    f (int or float): Frequency (Hz)
+
+    Return:
+    float: the wave length in m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-to-use-docstring-and-when-comments">
+<h3>When to use docstring and when comments?<a class="headerlink" href="#when-to-use-docstring-and-when-comments" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Placement</p></th>
+<th class="head"><p>Execution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Comments (#)</p></td>
+<td><p>Explain a specific part of the code</p></td>
+<td><p>Anywhere in the code</p></td>
+<td><p>Ignored by Python</p></td>
+</tr>
+<tr class="row-odd"><td><p>Docstrings (“”” “””)</p></td>
+<td><p>Document and describe functions, classes or modules</p></td>
+<td><p>Always at the beginning of a class, function or module</p></td>
+<td><p>Stored as metadata (.<strong>doc</strong>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>R</strong><br />
+Docstrings are somewhat analogous to Roxygen documentaiton in R. The recommended oconvention to document and describe function in R is by using <code class="docutils literal notranslate"><span class="pre">#'</span> </code>. Similarly to the <code class="docutils literal notranslate"><span class="pre">help()</span></code> command in Python, in R ``?function``` will provide the description.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#&#39; Returns the wavelength of a wave</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @param c float or int,  Sound velocity (m/s) </span>
+<span class="c1">#&#39; @param f float or int, Frequency in Hz </span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @return</span>
+<span class="c1">#&#39; @export</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @examples</span>
+<span class="c1">#&#39; wave_length(1500, 38000)</span>
+<span class="n">wave_length</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">f</span><span class="p">){</span>
+    <span class="n">return</span> <span class="n">c</span><span class="o">/</span><span class="n">f</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h2>
+<p>Classes can be seen as containers of specific functions and variables. Let’s think of a class called <em>AcousticWave</em> which we want to use to describe a number of properties of an acoustic wave, like the wave length:</p>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<p>In Python functions are <strong>def</strong>ined as:</p>
+<p>Functions are starting with <code class="docutils literal notranslate"><span class="pre">def</span></code> followed by the function name with the dependent variables in brackets. This line ends by <code class="docutils literal notranslate"><span class="pre">:</span></code>.<br />
+The following lines are indented to deliminate the space specific to the given function. The function end typically with a <code class="docutils literal notranslate"><span class="pre">return</span></code> call. <code class="docutils literal notranslate"><span class="pre">return</span></code>defines the output of the function (what is returned from the function).</p>
+<p>In our example of the wave length, the function would be <em>wave_length</em>, dependent on the soundspeed <em>c</em> and the frequency <em>f</em>  as <em>wave_length</em> <span class="math notranslate nohighlight">\(= \frac{c}{f} [m]\)</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wave_length</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">c</span> <span class="o">/</span> <span class="n">f</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Python functions compared to R and Matlab</em>
+The way functions are written in Python is analoguous to R and Matlab:<br />
+<strong>R</strong></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span>  <span class="n">function_name</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">){</span>
+      <span class="n">results</span> <span class="o">=</span> <span class="n">some</span>  <span class="n">stuff</span> <span class="n">is</span> <span class="n">happening</span> <span class="n">with</span> <span class="n">the</span> <span class="n">variables</span>
+      <span class="nf">return</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Matlab:</strong></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">function</span><span class="w"> </span>[result]<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span>v1, v2<span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">stuff</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">happening</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variables</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p><strong>Special case: lambda functions</strong></p>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h2>
+<p>Variables can be user defined or defined by initial values. In our examples these would be the sound speed <em>c</em> and frequency <em>f</em></p>
+<p>For example imagine a class AcousticWave which we use to describe acoustic waves. The properties of the acoustic wave depend on variables, that we want the user to provide. These could be <em>c</em> the soundspeed in m/s and <em>f</em> the frequency in Hz. The properties we want to describe could be wave length defined by a function <em>wave_length</em> that depends on <em>c</em> and <em>f</em></p>
+<p>A very minimalistic example would be:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><em>Naming convention for classes , funcitons and variables</em><br />
+<a class="reference external" href="https://peps.python.org/pep-0008/#class-names">Class names</a> should normally use the CapWords naming convention, e.g. AcousticWave<br />
+<a class="reference external" href="https://peps.python.org/pep-0008/#function-and-variable-names">Variable and Function names</a> should generally by lowercase, with words separated by underscores, e.g. wave_length</p>
+</div>
+<ul class="simple">
+<li><p><strong>Mathematical operations:</strong></p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Python</p></th>
+<th class="head"><p>Operation</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a = 3</p></td>
+<td><p>a = 3 (define or assign)</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>b = 4</p></td>
+<td><p>b = 4 (define or assign)</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>a + b</p></td>
+<td><p>Sum a and b (addition)</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>a - b</p></td>
+<td><p>Subtract b from a (subtraction)</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-even"><td><p>a * b</p></td>
+<td><p>a times b (multiplicaiton)</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>a / b</p></td>
+<td><p>a divided by b (division)</p></td>
+<td><p>0.75</p></td>
+</tr>
+<tr class="row-even"><td><p>a // b</p></td>
+<td><p>Integer part of a divided by b (floor division)</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>a % b</p></td>
+<td><p>Rest of a divided by b (modulus)</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>a**b</p></td>
+<td><p>a to the power of b (exponention)</p></td>
+<td><p>81</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The basic mathematical operations are analoguous to R and Matlab with the exception of <code class="docutils literal notranslate"><span class="pre">a**b</span></code>which would be <code class="docutils literal notranslate"><span class="pre">a^b</span></code>in R or Matlab.</p>
+</div>
+<p>For a lot of other mathematical operations or constants, we need to import the math module:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span> <span class="c1">#Euler&#39;s number</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">inf</span> <span class="p">)</span> <span class="c1">#positinve infinity floating point number</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="c1">#floating point not a number value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1">#number pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">tau</span><span class="p">)</span> <span class="c1">#math tau</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+inf
+nan
+3.141592653589793
+6.283185307179586
+</pre></div>
+</div>
+</div>
+</div>
+<p>Besides these mathematical constants, the math module also contains geomatric funcitons (e.g. <code class="docutils literal notranslate"><span class="pre">math.cos()</span></code>, <code class="docutils literal notranslate"><span class="pre">math.acos()</span></code>, <code class="docutils literal notranslate"><span class="pre">math.sin()</span></code>, <code class="docutils literal notranslate"><span class="pre">math.atan2()</span></code>, <code class="docutils literal notranslate"><span class="pre">math.hypot()</span></code>), transformations (<code class="docutils literal notranslate"><span class="pre">math.degrees()</span></code> - radians to degrees, <code class="docutils literal notranslate"><span class="pre">math.radians()</span></code> - degrees to radians,  <code class="docutils literal notranslate"><span class="pre">math.dist()</span></code> - euclidean distance, <code class="docutils literal notranslate"><span class="pre">math.close()</span></code> - checks if values are close to each other), and log functions  (e.g. <code class="docutils literal notranslate"><span class="pre">math.log()</span></code>, <code class="docutils literal notranslate"><span class="pre">math.log10()</span></code>) and many more.</p>
+</section>
+<section id="python-core-data-structure">
+<h2>Python core data structure<a class="headerlink" href="#python-core-data-structure" title="Permalink to this heading">#</a></h2>
+<p>There a re 4 core data structures in Python:</p>
+<ul class="simple">
+<li><p><strong>List</strong>: a collection of values, can be ordered and is changeable. Allows duplicate members.</p></li>
+<li><p><strong>Tuple</strong>: a collection which can be ordered and is <em>unchangeable</em>. Allows duplicate members.</p></li>
+<li><p><strong>Set</strong>: a collection which is unordered, <em>unchangeable</em>, <em>unindexed</em>. No duplicate members (duplicates ar eremoved). Items can’t be changed but can be removed or added.</p></li>
+<li><p><strong>Dictionary</strong>: a collection which is ordered (as of Python 3.7) and changeable. No duplicate members.</p></li>
+</ul>
+<section id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h3>
+<p>Are used to store sequences of items, and can hold a mix of data types like strings, integegers and floats. Lists are defined by <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>List operation</p></th>
+<th class="head"><p>Python</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>List of numbers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int_list</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">5,</span> <span class="pre">3,</span> <span class="pre">22,</span> <span class="pre">7,</span> <span class="pre">10]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">5,</span> <span class="pre">3,</span> <span class="pre">22,</span> <span class="pre">7,</span> <span class="pre">10]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>List of strings</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str_list</span> <span class="pre">=</span> <span class="pre">['e','c','h',</span> <span class="pre">'o',</span> <span class="pre">'p','y',</span> <span class="pre">'p',</span> <span class="pre">'e']</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">['e','c','h',</span> <span class="pre">'o',</span> <span class="pre">'p','y',</span> <span class="pre">'p',</span> <span class="pre">'e']</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>List with mixed types</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list</span> <span class="pre">=</span> <span class="pre">[&quot;EK&quot;,</span> <span class="pre">80,</span> <span class="pre">&quot;38</span> <span class="pre">kHz&quot;,</span> <span class="pre">7,</span> <span class="pre">&quot;CD&quot;]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">['EK',</span> <span class="pre">80,</span> <span class="pre">'38</span> <span class="pre">kHz',</span> <span class="pre">7,</span> <span class="pre">'CD']</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Access element at first position</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'EK'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Access element at fourth position</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list[3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'7'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Replace an element in a list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int_list[2]</span> <span class="pre">=</span> <span class="pre">4</span> </code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">5,</span> <span class="pre">4,</span> <span class="pre">22,</span> <span class="pre">7,</span> <span class="pre">10]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Get the number of elements in the list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len(mixed_list)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Add element to the end of a list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list.append('ME70')</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">['EK',</span> <span class="pre">80,</span> <span class="pre">'38</span> <span class="pre">kHz',</span> <span class="pre">7,</span> <span class="pre">'CD',</span> <span class="pre">'ME70']</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Add element to the 6th position of a list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list.insert([5,</span> <span class="pre">'Simrad'])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">['EK',</span> <span class="pre">80,</span> <span class="pre">'38</span> <span class="pre">kHz',</span> <span class="pre">7,</span> <span class="pre">'CD','Simrad'</span> <span class="pre">,'ME70']</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Extend list by a list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list.extend([24,18,36,'ME70','Beam'])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">['EK',</span> <span class="pre">80,</span> <span class="pre">'38</span> <span class="pre">kHz',</span> <span class="pre">7,</span> <span class="pre">'CD',</span> <span class="pre">'ME70',</span> <span class="pre">24,</span> <span class="pre">18,</span> <span class="pre">36,</span> <span class="pre">'ME70',</span> <span class="pre">'Beam']</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Count occurences of an element in a list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list.count['ME70']</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Clear list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed_list.clear()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Sort list alphabetically or ascending</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str_list.sort()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">['c',</span> <span class="pre">'e',</span> <span class="pre">'e',</span> <span class="pre">'h',</span> <span class="pre">'o',</span> <span class="pre">'p',</span> <span class="pre">'p',</span> <span class="pre">'y']</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sort list descending</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int_list.sort(reverse=True)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[22,</span> <span class="pre">10,</span> <span class="pre">7,</span> <span class="pre">5,</span> <span class="pre">4,</span> <span class="pre">1]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Remove elment from list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int_list.remove(5)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>List of lists can be used as matrix structures. We can create a 3x3 grid as a nested list of 3 lists:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="n">matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can access items with double indices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tuples">
+<h3>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading">#</a></h3>
+<p>Tuples are immutable - once created, the elments can’t be changed anymore. Tuples are used if you need data to be read only.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tuple Operation</p></th>
+<th class="head"><p>Python</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Create a tuple</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_tup</span> <span class="pre">=</span> <span class="pre">(1,2,3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,2,3)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Append values to a tuple</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_tup</span> <span class="pre">=</span> <span class="pre">num_tup</span> <span class="pre">+</span> <span class="pre">(4,5,6)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,2,3,4,5,6)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Repeat a tuple multiple times</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_tup</span> <span class="pre">=</span> <span class="pre">num_tup</span> <span class="pre">*</span> <span class="pre">3</span> </code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Get index of first occurence of a value</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_tup.index(5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Count number of occurences of a value</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_tup.count(5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sets">
+<h3>Sets<a class="headerlink" href="#sets" title="Permalink to this heading">#</a></h3>
+<p>Sets are collections of unique items, duplicates are removed automatically. Sets are handy for operations like union (combine), intersection or difference:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sets operation</p></th>
+<th class="head"><p>Python</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Define a Set of unique numbers (duplicates are removed)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_set={1,</span> <span class="pre">2,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">1,</span> <span class="pre">4,</span> <span class="pre">5}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{1,2,3,4,5}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Define a second Set of numbers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_set2</span> <span class="pre">=</span> <span class="pre">{4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Combine the two Sets</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(num_set|num_set2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Intersection of the two Sets <br>Elements present in both Sets</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_set</span> <span class="pre">&amp;</span> <span class="pre">num_set2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{4,</span> <span class="pre">5}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Difference the two Sets<br>Elements unique to the first Set</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_set</span> <span class="pre">-</span> <span class="pre">num_set2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Add a value to a Set</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_set.add(6)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Remove a value from a Set</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">num_set.remove(1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Check if value is in a Set</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">in</span> <span class="pre">num_set</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dictionaries">
+<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h3>
+<p>Dictionnaries store data in a key-value structure. Dictionnaries are useful for iterating (for tasks, such as filtering, sorting and grouping) over keys, values or items.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;key&#39;: &#39;value&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could create a nested dictionary containing the center frequency (kHz), maximum transmit power (W), the nominal 3dB beamwidth <span class="math notranslate nohighlight">\(\theta_{3dB}\)</span> (°), and the transducer area (<span class="math notranslate nohighlight">\(10^{-3}\)</span> m) for commonly used echosounders:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_trans_power</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;EK18_11&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">5000</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;EK38_7&quot;</span><span class="p">:</span> <span class="p">{</span>  
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">2500</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;EK70_7&quot;</span><span class="p">:</span> <span class="p">{</span>  
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">750</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;EK70_11&quot;</span><span class="p">:</span> <span class="p">{</span>  
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">300</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;EK120_7&quot;</span><span class="p">:</span> <span class="p">{</span>  
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">250</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;EK200_7&quot;</span><span class="p">:</span> <span class="p">{</span>  
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mf">4.4</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">110</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;EK333_7&quot;</span><span class="p">:</span> <span class="p">{</span>  
+        <span class="s2">&quot;frequency_kHz&quot;</span><span class="p">:</span> <span class="mi">333</span><span class="p">,</span>
+        <span class="s2">&quot;transducer_area&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;beamwidth_3dB&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;power&quot;</span><span class="p">:</span><span class="mi">2500</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we just quickly extract the transducer names and the maximum power:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">vals</span><span class="p">[</span><span class="s2">&quot;power&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">max_trans_power</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">power_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;EK18_11&#39;: 5000,
+ &#39;EK38_7&#39;: 2500,
+ &#39;EK70_7&#39;: 750,
+ &#39;EK70_11&#39;: 300,
+ &#39;EK120_7&#39;: 250,
+ &#39;EK200_7&#39;: 110,
+ &#39;EK333_7&#39;: 2500}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this information to find the transducers with the highest maximum operating power:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">power_dict</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">power_dict</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;EK18_11&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also list all echosounder names with a maximum operating power &gt; 1000 W:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">key</span><span class="p">:</span> <span class="n">power_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">power_dict</span><span class="p">))</span>
+<span class="n">keys</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;EK18_11&#39;, &#39;EK38_7&#39;, &#39;EK333_7&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_pkgmgmt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Package managers and environments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python_packages.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python packages</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation">Indentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-docstrings">Comments and docstrings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docsctring">Docsctring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-docstring-and-when-comments">When to use docstring and when comments?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-core-data-structure">Python core data structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wu-Jung Lee, Sven Gastauer, Erin LaBrecque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

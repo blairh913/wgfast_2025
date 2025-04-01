@@ -21,8 +21,17 @@ parts:
     chapters:
     - file: github_intro
     - file: git_intro
-  - caption: Python environments and Jupyter  # python, jupyter
+  - caption: Python tutorials  # python, jupyter
     chapters:
+    - file: python_bkg #history, background and zen of python
+    - file: python_install #install miniforge - minimal mamba, conda, python
+    - file: python_pkgmgmt #environments and package management
+    - file: python # maths, built in file structures
+    - file: python_packages #packages how to write a python package
+    #- file: python_notebooks #jupyter
+    #- file: python_webapp #widgets and weapps
+    #- file: python_plotting #plotting interactively
+  - caption: Echopype tutorials  # echopype tutorials
     - file: notebooks
     # - file:     # python setup
     # - file:     # computing environment
