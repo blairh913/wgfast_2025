@@ -1,9 +1,8 @@
 # Agenda
-All times in GMT  
-Room?  
-Zoom link? What is the virtual software?
 
-<br>
+All times in UTC  
+
+&nbsp;
 
 |Day 1 - April 5, 2025  |               |
 | :---          | :----:                |
