@@ -10,10 +10,6 @@
 
 [GitHub](https://github.com/) is a web-based hosting service that manages Git repositories. GitHub **is not** Git. GitHub allows you to collaborate on the work in Git repositories.
 
-GitHub is one of the most popular hosting platforms for version control systems, but there are others including [GitLab](https://gitlab.com/) and [Bitbucket](https://bitbucket.org/).
-
-&nbsp;
-
 ## Create a [GitHub](https://github.com) account if you do not already have one
 
 - Go to <https://github.com> and sign up for an account
