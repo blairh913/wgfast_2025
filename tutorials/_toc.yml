@@ -27,7 +27,7 @@ parts:
     - file: python_install #install miniforge - minimal mamba, conda, python
     - file: python_pkgmgmt #environments and package management
     - file: python # maths, built in file structures
-    - file: python_packages#packages how to write a python package
+    - file: python_packages #packages how to write a python package
     - file: python_jupyter #jupyter
     - file: python_xarray #xarray
     #- file: python_webapp #widgets and weapps
