@@ -1,21 +1,21 @@
-## Python packages  
+# Python packages  
 
 Python can be described as charged with batteries, to say that it already comes packed with a number of modules (functions and classes) to get you started. Still in every day use of Python, you will need additional external functionality which in Python is commonly imported through packages. Packages are the equivalent to libraries in R and can be compared to toolboxes in Matlab.  
 
-### What is a Python package?  
+## What is a Python package?  
 
 Typically a Python package contains an initialisation file (__init__.py), and a number of modules (containing classes, functions and variables) stored in a **.py* file.  
 
 ![Python Packages Classes and Functions](./python_why_files/classes_packages.png)
 
-- Classes  
+### Classes  
 Classes can be seen as containers of specific functions and variables. Let's think of a class called *AcousticWave* which we want to use to describe a number of properties of an acoustic wave, like the wave length  
 
 ```python
 class AcousticWave
 ```
 
-- Functions  
+### Methods Functions  
   
   In Python functions are **def**ined as:  
   
@@ -28,7 +28,7 @@ class AcousticWave
     Functions are starting with ```def``` followed by the function name with the dependent variables in brackets. This line ends by ```:```.  
     The following lines are indented to deliminate the space specific to the given function. The function end typically with a ```return``` call. ```return```defines the output of the function (what is returned from the function).  
 
-  In a Python package, functions are specific to a class. In our example of the wave length, the function would be *wave_length*, dependent on the soundspeed *c* and the frequency *f*  as *wave_length* $= \frac{c}{f} [m]$
+  If functions are tied to a class they are called methods. In our example of the wave length, the function would be *wave_length*, dependent on the soundspeed *c* and the frequency *f*  as *wave_length* $= \frac{c}{f} [m]$
 
   ```python
   def wave_length(c, f):
@@ -70,7 +70,7 @@ A very minimalistic example would be:
 
 A Python package contains one or more modules. A module is a *.py* file that contains reusable code, typically functions or models
 
-### Comparison using additional tools in Python, R, Matlab  
+## Comparison using additional tools in Python, R, Matlab  
 
 | Python | R |
 | ------ | - |
