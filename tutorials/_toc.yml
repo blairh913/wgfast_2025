@@ -38,7 +38,7 @@ parts:
     #- file: python_plotting #plotting interactively
   - caption: Echopype-related tools  # echopype-related tools
     chapters:
-    - title: overview
+    - title: Overview
       url: https://docs.google.com/presentation/d/1IRYz0j_AdjfVdy4YMGHF5a9CQZz7emXP5Ssv8zyXDPU/edit?usp=sharing
     - file: tool_echopype_basics  # basics
     - file: tool_echoregions  # masking regions and lines
