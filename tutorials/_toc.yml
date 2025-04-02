@@ -29,11 +29,14 @@ parts:
     chapters:
     - file: python_bkg #history, background and zen of python
     - file: python_install #install miniforge - minimal mamba, conda, python
-    - file: python_pkgmgmt #environments and package management
-    - file: python # maths, built in file structures
     - file: python_packages #packages how to write a python package
+    - file: python_pkgmgmt #environments and package management
+    - file: python_editors #Python editors / IDEs
     - file: python_jupyter #jupyter
+    - file: python # maths, built in file structures
+    - file: python_datan #data analysis tools
     - file: python_xarray #xarray
+    - file: python_package #Build package from scratch
     #- file: python_webapp #widgets and weapps
     #- file: python_plotting #plotting interactively
   - caption: Echopype-related tools  # echopype-related tools

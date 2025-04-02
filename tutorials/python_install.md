@@ -12,7 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# Minimal install conda, mamba, Python  
+# Minimal install 
+
+## Miniforge - all you need...
 
 The very easiest way to get a minimal install of [Conda](https://conda.io/), [Mamba](https://github.com/mamba-org/mamba) and Python, with conda-forge as default channel is to install [Miniforge](https://github.com/conda-forge/miniforge).  
 Once Miniforge is installed, you should be able to use ```conda``` and ```mamba``` in your terminal.  
