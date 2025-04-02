@@ -1,0 +1,26 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uwa"
+version = "0.1"
+authors = [
+  { name="Jupyter Pythonista", email="jupyter@python.net" },
+]
+description = "A package for underwater acoustic wave calculations"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT AND (Apache-2.0 OR BSD-2-Clause)"
+
+[project.urls]
+Homepage = "https://github.com/xxx/underwater_acoustics"
+Issues = "https://github.com/xxx/underwater_acoustics/issues"
