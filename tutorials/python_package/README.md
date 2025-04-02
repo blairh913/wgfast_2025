@@ -9,5 +9,7 @@ This Python package provides calculations related to **underwater acoustic waves
 You can install this package using the provided wheel
 
 ## Usage
+```{code-block} python
 from uwa import AcousticWave
 aw = AcousticWave(38000)
+```
