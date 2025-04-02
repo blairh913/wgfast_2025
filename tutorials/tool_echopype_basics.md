@@ -13,7 +13,7 @@ Probably should add these into echopype docs and echopype-examples repo, rather 
 - on-disk object for large files
 
 
-# Computing Sv
+## Computing Sv
 
 - know your data: FM vs CW, power-angle vs complex data
 - explain current implementation of Sv from broadband data
