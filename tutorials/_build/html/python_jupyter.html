@@ -1,0 +1,1052 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jupyter &#8212; WGFAST 2025 workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_jupyter';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python (very basic) Basics" href="python.html" />
+    <link rel="prev" title="Python Editors" href="python_editors.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="WGFAST 2025 workshop - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="WGFAST 2025 workshop - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview &amp; misc</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="agenda.html">Agenda</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1HkNFWCowsjM-eOssQu55icDnICvG_s0Ska3MThQjFTM/edit?usp=sharing">Introduction</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/13p2R3KcbnoxD1Vdub8M0uMxhl8O7RmgUvLgnT1N1HYk/edit?usp=sharing">Reproducible research best practices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discourse.ocean-acoustics.org/">Discourse forum</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pre-workshop Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pre_workshop_setup.html">Before the workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_setup.html">1. GitHub Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_desktop_setup.html">2. GitHub Desktop Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_setup.html">3. Git Setup</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Git/GitHub tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">GitHub Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_intro.html">Git Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_bkg.html">Python - and the machine that goes ping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_install.html">Minimal install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_packages.html">Python packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_pkgmgmt.html">Package managers and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_editors.html">Python Editors</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python (very basic) Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_datan.html">Common data analysis tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_xarray.html">Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_package.html">Creating a Python Package <code class="docutils literal notranslate"><span class="pre">underwater_acoustics</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Echopype-related tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1IRYz0j_AdjfVdy4YMGHF5a9CQZz7emXP5Ssv8zyXDPU/edit?usp=sharing">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echopype_basics.html">Echopype basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echoregions.html">Echoregions demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echopype_demo.html">Echopype out-of-memory computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echoshader_demo.html">Echoshader demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_interoperate.html">Interoperating Echopype-generated data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/main/tutorials/python_jupyter.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpython_jupyter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python_jupyter.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jupyter-environment">The Jupyter environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-jupyter">Why use Jupyter?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-differences-between-jupyter-and-jupyterlab">What are differences between Jupyter and JupyterLab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-jupyter">Installing Jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-basics">Notebook Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mode-switching">Mode Switching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-operations">Cell Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-editing-shortcuts">Text Editing Shortcuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-execution">Kernel &amp; Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-navigation">Notebook Navigation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-see-all-shortcuts-in-jupyter-notebook">How to See All Shortcuts in Jupyter Notebook?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-markdown-skills">Basic Markdown Skills</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter">
+<h1>Jupyter<a class="headerlink" href="#jupyter" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://jupyter.org/">Jupyter</a> aims to provide tools for interactive programming across multiple languages, including the three core languages Julia, Python and R, from which the name is derived. Besides the core languages, there is a long <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">list of other kernels</a> that are available (including Matlab, Fortran, Java)</p>
+<section id="the-jupyter-environment">
+<h2>The Jupyter environment<a class="headerlink" href="#the-jupyter-environment" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter Notebook</a> (original, basic interface)</p></li>
+<li><p><a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a> (newer, more advanced interface)</p></li>
+<li><p><a class="reference external" href="https://jupyterhub.readthedocs.io/en/latest/">JupyterHub</a> (multi-user collaboration)</p></li>
+</ul>
+<p>Other notable projects that rely on Jupyter are <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Books</a> (to create beautiful, publication-quality books), <a class="reference external" href="https://vatlab.github.io/sos-docs/notebook.html">SoS</a> (for using multiple different kernels in one document)</p>
+</section>
+<section id="why-use-jupyter">
+<h2>Why use Jupyter?<a class="headerlink" href="#why-use-jupyter" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Combine Code, Text, Equations and Visualisations</p>
+<p>Jupyter notebooks can be broken up into Code and Markdown blocks. <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html">Markdown blocks</a> blocks can include Latex Equations (put between <code class="docutils literal notranslate"><span class="pre">$</span></code>signs, like <code class="docutils literal notranslate"><span class="pre">$</span></code>TS=10log_{10} (\sigma_{bs})<code class="docutils literal notranslate"><span class="pre">$</span></code> renders as <span class="math notranslate nohighlight">\(TS=10log_{10} (\sigma_{bs})\)</span>). Additionally Markdown blocks can include images, list, tables etc…<br />
+This makes notebooks useful to:</p>
+<ul class="simple">
+<li><p>Write code documentation (but Notebooks are no replacement for comments or docstrings!)</p></li>
+<li><p>Generate sclear and transparent reports</p></li>
+<li><p>Explain scientific work with equations</p></li>
+</ul>
+</li>
+<li><p>Data Visualisation and Exploration
+Jupyter allows the generation of inine plots, integrating well with most standard plotting libraries, including Matplotlib, Seaborn, Plotly, Holoviews, and others. Jupyter also supports the integration of Dash or Bokeh widgets to add even more interactivity.</p></li>
+<li><p>Easy Sharing &amp; Collaboration
+Jupyter notebooks, use the <code class="docutils literal notranslate"><span class="pre">ipynb</span></code>ending which can be converted to HTML, PDF, Markdown, Python, LaTeX, executable Python script, asciidoc or as Slides. Notebooks can directly be shared through GitHub, Google Colab or Binder and JupyterHub can be used for multi-user collaboration.</p></li>
+</ul>
+</section>
+<section id="what-are-differences-between-jupyter-and-jupyterlab">
+<h2>What are differences between Jupyter and JupyterLab?<a class="headerlink" href="#what-are-differences-between-jupyter-and-jupyterlab" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Jupyter Notebook</p></th>
+<th class="head"><p>JupyterLab</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Interface</p></td>
+<td><p>Basic</p></td>
+<td><p>Modern, IDE-like</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multiple Tabs</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>File Management</p></td>
+<td><p>Simple</p></td>
+<td><p>Advanced (drag-drop, side panels)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Customization</p></td>
+<td><p>Limited</p></td>
+<td><p>Extensive</p></td>
+</tr>
+<tr class="row-even"><td><p>Extensibility</p></td>
+<td><p>Few extensions</p></td>
+<td><p>Many extensions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Basically JupyterLab is the new, more extensive, powerful and fancy sibbling of Jupyter Notebook. In most cases it makes sense to use JupyterLab.</p>
+</section>
+<section id="installing-jupyter">
+<h2>Installing Jupyter<a class="headerlink" href="#installing-jupyter" title="Link to this heading">#</a></h2>
+<p>The easiest way to get started with the Jupyter environment is to install the full Jupyter package with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyter
+</pre></div>
+</div>
+<p>This will include:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jupyter Notebook (notebook)</p></td>
+<td><p>The classic Jupyter Notebook interface</p></td>
+</tr>
+<tr class="row-odd"><td><p>JupyterLab (jupyterlab)</p></td>
+<td><p>The modern, more powerful Jupyter interface</p></td>
+</tr>
+<tr class="row-even"><td><p>IPython (ipython)</p></td>
+<td><p>Interactive Python shell used by Jupyter</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jupyter Client (jupyter_client)</p></td>
+<td><p>Manages communication between the notebook and kernel</p></td>
+</tr>
+<tr class="row-even"><td><p>Jupyter Core (jupyter_core)</p></td>
+<td><p>Core functionalities for Jupyter</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nbconvert (nbconvert)</p></td>
+<td><p>Converts notebooks to formats like HTML, PDF, Markdown</p></td>
+</tr>
+<tr class="row-even"><td><p>Nbformat (nbformat)</p></td>
+<td><p>Handles notebook file formats (.ipynb)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jupyter Console (jupyter_console)</p></td>
+<td><p>Command-line interface for Jupyter kernels</p></td>
+</tr>
+<tr class="row-even"><td><p>QtConsole (qtconsole)	Jupyter interface with a Qt-based GUI (optional)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you only want to use Jupyer Notebook use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>notebook
+</pre></div>
+</div>
+<p>or if you only want JupyterLab:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+<p>To run Jupyter notebook, open a Terminal window and browse to the folder within which you want to work. Now run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
+</pre></div>
+</div>
+<p>This will open a browser window with the files in the selected folder.</p>
+</section>
+<section id="notebook-basics">
+<h2>Notebook Basics<a class="headerlink" href="#notebook-basics" title="Link to this heading">#</a></h2>
+<p>The first step will be to create a new Notebook:<br />
+<img alt="New Notebook" src="_images/jupyter-new-tab.png" /></p>
+<p>Now you are ready to write code and Markdown content!</p>
+<p><img alt="" src="_images/start.png" /></p>
+<section id="mode-switching">
+<h3>Mode Switching<a class="headerlink" href="#mode-switching" title="Link to this heading">#</a></h3>
+<p>Jupyter has two modes:</p>
+<ul class="simple">
+<li><p><strong>Command Mode</strong> (Press <code class="docutils literal notranslate"><span class="pre">Esc</span></code>) → Used for navigating and managing cells.</p></li>
+<li><p><strong>Edit Mode</strong> (Press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>) → Used for typing inside a cell.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Action</strong></p></th>
+<th class="head"><p><strong>Shortcut Key</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Switch to Command Mode</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code></p></td>
+<td><p>Exit Edit Mode to navigate cells</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Switch to Edit Mode</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Enter</span></code></p></td>
+<td><p>Enter Edit Mode to modify a cell</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cell-operations">
+<h3>Cell Operations<a class="headerlink" href="#cell-operations" title="Link to this heading">#</a></h3>
+<p>Command Mode - Press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> First</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Action</strong></p></th>
+<th class="head"><p><strong>Shortcut Key</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Run Cell &amp; Stay</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code></p></td>
+<td><p>Runs the cell &amp; moves to the next one</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Run Cell &amp; Insert Below</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">Enter</span></code></p></td>
+<td><p>Runs the cell &amp; inserts a new one below</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Run Cell &amp; Select Above</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Enter</span></code></p></td>
+<td><p>Runs the cell but does not move</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Insert New Cell Below</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
+<td><p>Adds a new cell below the current one</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Insert New Cell Above</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+<td><p>Adds a new cell above the current one</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Delete a Cell</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D</span></code> <code class="docutils literal notranslate"><span class="pre">D</span></code> (double press)</p></td>
+<td><p>Deletes the selected cell</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Undo Delete</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z</span></code></p></td>
+<td><p>Restores the last deleted cell</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Copy Cell</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<td><p>Copies the current cell</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cut Cell</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
+<td><p>Cuts the current cell</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Paste Cell Below</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
+<td><p>Pastes the copied/cut cell below</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Paste Cell Above</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">V</span></code></p></td>
+<td><p>Pastes the copied/cut cell above</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Move Cell Up</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Up</span></code></p></td>
+<td><p>Moves the selected cell up</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Move Cell Down</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Down</span></code></p></td>
+<td><p>Moves the selected cell down</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Change Cell to Code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
+<td><p>Converts the cell to a code cell</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Change Cell to Markdown</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">M</span></code></p></td>
+<td><p>Converts the cell to Markdown mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Merge with Cell Below</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">M</span></code></p></td>
+<td><p>Merges the selected cell with the one below</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="text-editing-shortcuts">
+<h3>Text Editing Shortcuts<a class="headerlink" href="#text-editing-shortcuts" title="Link to this heading">#</a></h3>
+<p>Edit Mode - Press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> First</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Action</strong></p></th>
+<th class="head"><p><strong>Shortcut Key</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Autocomplete Code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code></p></td>
+<td><p>Auto-suggests methods/variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Show Documentation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code></p></td>
+<td><p>Shows docstring/help for a function</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Comment/Uncomment Line</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">/</span></code></p></td>
+<td><p>Toggles comments for selected lines</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Indent Code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code></p></td>
+<td><p>Indents selected code</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Unindent Code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code></p></td>
+<td><p>Unindents selected code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="kernel-execution">
+<h3>Kernel &amp; Execution<a class="headerlink" href="#kernel-execution" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Action</strong></p></th>
+<th class="head"><p><strong>Shortcut Key</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interrupt Kernel</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">I</span></code> (double press)</p></td>
+<td><p>Stops the current execution</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Restart Kernel</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">0</span></code> (double press)</p></td>
+<td><p>Restarts the notebook kernel</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Restart &amp; Run All Cells</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">R</span></code></p></td>
+<td><p>Restarts kernel &amp; runs all cells</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="notebook-navigation">
+<h3>Notebook Navigation<a class="headerlink" href="#notebook-navigation" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Action</strong></p></th>
+<th class="head"><p><strong>Shortcut Key</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Toggle Sidebar</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Space</span></code></p></td>
+<td><p>Shows/hides the sidebar</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Go to Next Cell</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Down</span> <span class="pre">Arrow</span></code></p></td>
+<td><p>Moves to the cell below</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Go to Previous Cell</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Up</span> <span class="pre">Arrow</span></code></p></td>
+<td><p>Moves to the cell above</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Open Command Palette</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">C</span></code></p></td>
+<td><p>Opens the Jupyter command menu</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Show Table Of Contents</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">K</span></code></p></td>
+<td><p>Shows / hides the TOC</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="how-to-see-all-shortcuts-in-jupyter-notebook">
+<h3>How to See All Shortcuts in Jupyter Notebook?<a class="headerlink" href="#how-to-see-all-shortcuts-in-jupyter-notebook" title="Link to this heading">#</a></h3>
+<p>Press:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">H</span></code></strong> (in Command Mode) → Opens a help window with all shortcuts</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code></strong> → Opens the command palette for searching commands</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can customize shortcuts in <strong>Help &gt; Edit Keyboard Shortcuts</strong>.</p>
+</div>
+</section>
+</section>
+<section id="basic-markdown-skills">
+<h2>Basic Markdown Skills<a class="headerlink" href="#basic-markdown-skills" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Category</strong></p></th>
+<th class="head"><p><strong>Syntax</strong></p></th>
+<th class="head"><p><strong>Example</strong></p></th>
+<th class="head"><p><strong>Rendered Output</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Headings</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Heading</span> <span class="pre">1</span></code> <br> <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Heading</span> <span class="pre">2</span></code> <br> <code class="docutils literal notranslate"><span class="pre">###</span> <span class="pre">Heading</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">subheading</span></code></p></td>
+<td><p><strong>This is a subheading</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bold Text</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">**bold**</span></code> or <code class="docutils literal notranslate"><span class="pre">__bold__</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">**Important**</span></code></p></td>
+<td><p><strong>Important</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Italic Text</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*italic*</span></code> or <code class="docutils literal notranslate"><span class="pre">_italic_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*Emphasized*</span></code></p></td>
+<td><p><em>Emphasized</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bold + Italic</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">***bold</span> <span class="pre">&amp;</span> <span class="pre">italic***</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">***Very</span> <span class="pre">important!***</span></code></p></td>
+<td><p><em><strong>Very important!</strong></em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Strikethrough</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~~strikethrough~~</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~~wrong</span> <span class="pre">text~~</span></code></p></td>
+<td><p>~~wrong text~~</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Lists</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Item</span> <span class="pre">1</span></code><br><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Item</span> <span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Apple</span></code><br><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Orange</span></code></p></td>
+<td><p>- Apple<br>- Orange</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ordered List</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">First</span> <span class="pre">item</span></code> <br> <code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Second</span> <span class="pre">item</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Start</span></code><br><code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Continue</span></code></p></td>
+<td><p>1. Start <br> 2. Continue</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Inline Code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">`code`</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">`print(&quot;Hello&quot;)`</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">print(&quot;Hello&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Code Block</strong></p></td>
+<td><p>```python<br>print(“Hello”)<br>```</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">print(&quot;Hello&quot;)</span> </code></p></td>
+<td><p>Python code block</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Blockquote</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">quote</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Jupyter</span> <span class="pre">is</span> <span class="pre">great!</span></code></p></td>
+<td><p>&gt; Jupyter is great!</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Horizontal Line</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">---</span></code> or <code class="docutils literal notranslate"><span class="pre">***</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">---</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hyperlink</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[text](URL)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[Google](https://google.com)</span></code></p></td>
+<td><p><a class="reference external" href="https://google.com">Google</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Image</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">![alt</span> <span class="pre">text](image_url)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">![Jupyter</span> <span class="pre">Logo](https://jupyter.org/assets/nav_logo.svg)</span></code></p></td>
+<td><p><img alt="Jupyter Logo" src="https://jupyter.org/assets/nav_logo.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LaTeX Math</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$E=mc^2$</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$E=mc^2$</span></code></p></td>
+<td><p>(E=mc^2)</p></td>
+</tr>
+<tr class="row-even"><td><p>—- <br> Alice</p></td>
+<td><p>25</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Task List</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">Task</span> <span class="pre">1</span></code> <br> <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">[x]</span> <span class="pre">Task</span> <span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">To</span> <span class="pre">do</span></code> <br> <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">[x]</span> <span class="pre">Done</span></code></p></td>
+<td><p>☐ To do <br> ☑ Done</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">Name</span>     <span class="o">|</span><span class="n">Language</span> <span class="o">|</span><span class="n">Age</span>  <span class="o">|</span>
+<span class="o">|---------|---------|-----|</span>
+<span class="o">|</span><span class="n">Kim</span>      <span class="o">|</span><span class="n">Python</span>   <span class="o">|</span><span class="mi">42</span>   <span class="o">|</span>
+<span class="o">|</span><span class="n">Sascha</span>   <span class="o">|</span><span class="n">R</span>        <span class="o">|</span><span class="mi">24</span>   <span class="o">|</span>
+</pre></div>
+</div>
+<p>will render as:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Language</p></th>
+<th class="head"><p>Age</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Kim</p></td>
+<td><p>Python</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sascha</p></td>
+<td><p>R</p></td>
+<td><p>24</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_editors.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python Editors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python (very basic) Basics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jupyter-environment">The Jupyter environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-jupyter">Why use Jupyter?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-differences-between-jupyter-and-jupyterlab">What are differences between Jupyter and JupyterLab?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-jupyter">Installing Jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-basics">Notebook Basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mode-switching">Mode Switching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-operations">Cell Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-editing-shortcuts">Text Editing Shortcuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-execution">Kernel &amp; Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-navigation">Notebook Navigation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-see-all-shortcuts-in-jupyter-notebook">How to See All Shortcuts in Jupyter Notebook?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-markdown-skills">Basic Markdown Skills</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wu-Jung Lee, Sven Gastauer, Erin LaBrecque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
