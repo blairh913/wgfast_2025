@@ -20,10 +20,6 @@ GitHub is one of the most popular hosting platforms for version control systems,
 
 &nbsp;
 
-## Workflows
-
-The 
-
 ## How to Create a repository  
 
 After you create your account and sign in, you will land on your GitHub Dashboard page or Home. If you follow other developers or specific repositories, their updates will show up here.
