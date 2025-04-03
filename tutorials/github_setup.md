@@ -1,4 +1,4 @@
-# 1. GitHub Setup
+# GitHub Setup
 
 ```{image} images/Octocat.png
 :alt: GitHub Octocat
