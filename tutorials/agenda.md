@@ -1,9 +1,8 @@
 # Agenda
 
-All times in UTC  
-All times in Iceland local time (GMT).
+All times in Iceland local time (UTC).
 
-For remote participation, please use the Teams link you received in email to join.
+For remote participation, please use the Teams link you received in your email.
 
 &nbsp;
 
