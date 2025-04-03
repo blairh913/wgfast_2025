@@ -12,7 +12,7 @@
 
 GitHub is one of the most popular hosting platforms for version control systems, but there are others including [GitLab](https://gitlab.com/) and [Bitbucket](https://bitbucket.org/).
 
-```{image}images/GL_and_BB_logos.png
+```{image} images/GL_and_BB_logos.png
 :alt: GitLab logo
 :width: 300px
 :align: center
