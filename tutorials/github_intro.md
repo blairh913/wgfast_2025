@@ -12,6 +12,14 @@
 
 GitHub is one of the most popular hosting platforms for version control systems, but there are others including [GitLab](https://gitlab.com/) and [Bitbucket](https://bitbucket.org/).
 
+```{image}images/GL_and_BB_logos.png
+:alt: GitLab logo
+:width: 300px
+:align: center
+```
+
+&nbsp;
+
 ## How to Create a repository  
 
 After you create your account and sign in, you will land on your GitHub Dashboard page or Home. If you follow other developers or specific repositories, their updates will show up here.

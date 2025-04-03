@@ -1,9 +1,10 @@
 # Agenda
-All times in Iceland local time (GMT).
 
-For remote participation, please use the Teams link you received in email to join.
+All times in Iceland local time (UTC).
 
-<br>
+For remote participation, please use the Teams link you received in your email.
+
+&nbsp;
 
 |Day 1 - April 6, 2025  |               |
 | :---          | :----:                |
