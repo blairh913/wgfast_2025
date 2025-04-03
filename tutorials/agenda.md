@@ -1,10 +1,13 @@
 # Agenda
 
 All times in UTC  
+All times in Iceland local time (GMT).
+
+For remote participation, please use the Teams link you received in email to join.
 
 &nbsp;
 
-|Day 1 - April 5, 2025  |               |
+|Day 1 - April 6, 2025  |               |
 | :---          | :----:                |
 |2:00 - 2:30 pm | Introductions         |
 |2:30 - 2:45 pm | Break                 |
@@ -15,7 +18,7 @@ All times in UTC
 
 ---
 
-| Day 2 - April 6, 2025 |                              |
+| Day 2 - April 7, 2025 |                              |
 | :---          | :----:                               |
 |2:00 - 2:15 pm | Open-source Python tools             |
 |2:15 - 3:15 pm | Data manipulation and plotting       |
