@@ -1,0 +1,2835 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pandas and Xarray &#8212; WGFAST 2025 workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_pandas_xarray';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating a Python Package uwa" href="python_package.html" />
+    <link rel="prev" title="Data Analysis" href="python_datan.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="WGFAST 2025 workshop - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="WGFAST 2025 workshop - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview &amp; misc</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="agenda.html">Agenda</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1HkNFWCowsjM-eOssQu55icDnICvG_s0Ska3MThQjFTM/edit?usp=sharing">Introduction</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/13p2R3KcbnoxD1Vdub8M0uMxhl8O7RmgUvLgnT1N1HYk/edit?usp=sharing">Reproducible research best practices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discourse.ocean-acoustics.org/">Discourse forum</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pre-workshop Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pre_workshop_setup.html">Before the workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_setup.html">1. GitHub Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_desktop_setup.html">2. GitHub Desktop Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_setup.html">3. Git Setup</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Git/GitHub tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">GitHub Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_intro.html">Git Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_bkg.html">Python - and the machine that goes ping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_install.html">Minimal install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_packages.html">Python packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_pkgmgmt.html">Package managers and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_editors.html">Python Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_jupyter.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python (very basic) Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_datan.html">Data Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pandas and Xarray</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="python_package.html">Creating a Python Package <code class="docutils literal notranslate"><span class="pre">uwa</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Echopype-related tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1IRYz0j_AdjfVdy4YMGHF5a9CQZz7emXP5Ssv8zyXDPU/edit?usp=sharing">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echopype_basics.html">Echopype basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echoregions.html">Echoregions demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echopype_demo.html">Echopype out-of-memory computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_echoshader_demo.html">Echoshader demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_interoperate.html">Interoperating Echopype-generated data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/main/tutorials/python_pandas_xarray.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpython_pandas_xarray.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python_pandas_xarray.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas and Xarray</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pandas and Xarray</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-between-xarray-and-pandas">Differences Between xarray and pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-pandas-vs-xarray">When to Use Pandas vs. Xarray?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-datframe-in-pandas">Creating a DatFrame in Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-wrangling">Data Wrangling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-plotting">Pandas Plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">Heatmaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-pandas-and-r-dplyr">Comparison of Pandas and R dplyr</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataarray">DataArray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensions">Dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinates">Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrary-attributes">Arbitrary attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-data">Underlying data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-and-xarray">
+<h1>Pandas and Xarray<a class="headerlink" href="#pandas-and-xarray" title="Link to this heading">#</a></h1>
+<p>Here we will focus on <strong>pandas</strong> and <strong>xarray</strong>. <strong>numpy</strong> functions are widely used even within <strong>pandas</strong> and <strong>xarray</strong>.</p>
+<section id="differences-between-xarray-and-pandas">
+<h2>Differences Between xarray and pandas<a class="headerlink" href="#differences-between-xarray-and-pandas" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p><strong>pandas</strong></p></th>
+<th class="head"><p><strong>xarray</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data Structure</strong></p></td>
+<td><p>1D (Series) &amp; 2D (DataFrame)</p></td>
+<td><p>N-dimensional arrays (DataArray, Dataset)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Indexing</strong></p></td>
+<td><p>Labels for rows/columns</p></td>
+<td><p>Labels for multiple dimensions (multi-dimensional indexing)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Handling of Dimensions</strong></p></td>
+<td><p>Works best with tabular data</p></td>
+<td><p>Designed for multi-dimensional data (e.g., time, latitude, longitude)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Performance</strong></p></td>
+<td><p>Optimized for 1D &amp; 2D operations</p></td>
+<td><p>Optimized for large multi-dimensional datasets</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Multi-Indexing</strong></p></td>
+<td><p>Supported but can get complex</p></td>
+<td><p>Native multi-dimensional indexing</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NetCDF &amp; Scientific Data Support</strong></p></td>
+<td><p>No built-in support</p></td>
+<td><p>Built-in support for NetCDF, GRIB, and HDF5 formats (limited Zarr support)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Aggregation &amp; Reduction</strong></p></td>
+<td><p>Groupby and pivot for summarization</p></td>
+<td><p>Can reduce over multiple dimensions easily</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Memory Usage</strong></p></td>
+<td><p>Efficient for tabular data</p></td>
+<td><p>Can be optimized with chunking via Dask</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Integration with Dask</strong></p></td>
+<td><p>Limited support</p></td>
+<td><p>Natively supports lazy loading &amp; parallel computation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use Case</strong></p></td>
+<td><p>Best for structured tabular data (e.g., CSV, SQL)</p></td>
+<td><p>Best for multi-dimensional scientific data (e.g., climate models, geospatial, satellite data)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="when-to-use-pandas-vs-xarray">
+<h2>When to Use Pandas vs. Xarray?<a class="headerlink" href="#when-to-use-pandas-vs-xarray" title="Link to this heading">#</a></h2>
+<p>🔹 <strong>Use Pandas when:</strong></p>
+<ul class="simple">
+<li><p>You have <strong>structured, tabular data</strong> (like CSV, Excel, SQL).</p></li>
+<li><p>Your data fits well in <strong>rows and columns</strong>.</p></li>
+<li><p>You need <strong>fast operations on 1D or 2D datasets</strong>.</p></li>
+</ul>
+<p>🔹 <strong>Use Xarray when:</strong></p>
+<ul class="simple">
+<li><p>Your data is <strong>multi-dimensional</strong> (e.g., climate, geospatial, satellite data).</p></li>
+<li><p>You work with <strong>scientific datasets</strong> (NetCDF, GRIB, HDF5).</p></li>
+<li><p>You need <strong>efficient handling of large datasets</strong> with parallel processing (via Dask).</p></li>
+<li><p>You require <strong>native multi-dimensional indexing and operations</strong>.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pandas">
+<h1>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h1>
+<p>Find the <a class="reference external" href="https://pandas.pydata.org/docs/index.html">pandas reference here</a></p>
+<p>A good way to learn pandas is through <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/10min.html">10 minutes to pandas</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uwa</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="creating-a-datframe-in-pandas">
+<h2>Creating a DatFrame in Pandas<a class="headerlink" href="#creating-a-datframe-in-pandas" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> are pretty much the same as <code class="docutils literal notranslate"><span class="pre">dataframes</span></code> in <code class="docutils literal notranslate"><span class="pre">R</span></code> basically the tabular form of Python dictionaries and can be create quickly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;First&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+              <span class="s2">&quot;Second&quot;</span><span class="p">:[</span><span class="s2">&quot;One&quot;</span><span class="p">,</span> <span class="s2">&quot;Two&quot;</span><span class="p">,</span> <span class="s2">&quot;Three&quot;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>First</th>
+      <th>Second</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>One</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Two</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Three</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">uwa</span></code> package to generate results in a loop and combine the resuls dict into a dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span> <span class="c1">#convert to dataframe</span>
+    <span class="n">uwa</span><span class="o">.</span><span class="n">AcousticWave</span><span class="p">(</span><span class="n">speed</span> <span class="o">=</span><span class="mi">1470</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">f</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="vm">__dict__</span>  <span class="c1">#extract all attributes as dict</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span> <span class="c1">#loop over a range of frequencies</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="c1">#loop over a range of beam widths</span>
+<span class="p">])</span>
+
+<span class="c1">#let&#39;s see the Dataframe</span>
+<span class="n">nfs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>frequency</th>
+      <th>speed</th>
+      <th>bw</th>
+      <th>wl</th>
+      <th>k</th>
+      <th>ar</th>
+      <th>rnf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10000</td>
+      <td>1470</td>
+      <td>3</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>2.860016</td>
+      <td>43.702814</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10000</td>
+      <td>1470</td>
+      <td>4</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>2.145202</td>
+      <td>24.587202</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10000</td>
+      <td>1470</td>
+      <td>5</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>1.716358</td>
+      <td>15.739405</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10000</td>
+      <td>1470</td>
+      <td>6</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>1.430498</td>
+      <td>10.933195</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10000</td>
+      <td>1470</td>
+      <td>7</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>1.226344</td>
+      <td>8.035203</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1542</th>
+      <td>100000</td>
+      <td>1470</td>
+      <td>15</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.057357</td>
+      <td>0.175773</td>
+    </tr>
+    <tr>
+      <th>1543</th>
+      <td>100000</td>
+      <td>1470</td>
+      <td>16</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.053794</td>
+      <td>0.154610</td>
+    </tr>
+    <tr>
+      <th>1544</th>
+      <td>100000</td>
+      <td>1470</td>
+      <td>17</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.050651</td>
+      <td>0.137070</td>
+    </tr>
+    <tr>
+      <th>1545</th>
+      <td>100000</td>
+      <td>1470</td>
+      <td>18</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.047858</td>
+      <td>0.122372</td>
+    </tr>
+    <tr>
+      <th>1546</th>
+      <td>100000</td>
+      <td>1470</td>
+      <td>19</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.045361</td>
+      <td>0.109933</td>
+    </tr>
+  </tbody>
+</table>
+<p>1547 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>Pandas is useful to read tabular files like csv files as <code class="docutils literal notranslate"><span class="pre">pd.read_csv(filename)</span></code> and supports a long list of <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html">other file formats</a>.<br />
+Pandas Dataframes use indexing a lot and <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html">MultiIndexes</a> are common:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nfs</span> <span class="o">=</span> <span class="n">nfs</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;bw&#39;</span><span class="p">])</span>
+<span class="n">nfs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>speed</th>
+      <th>wl</th>
+      <th>k</th>
+      <th>ar</th>
+      <th>rnf</th>
+    </tr>
+    <tr>
+      <th>frequency</th>
+      <th>bw</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">10000</th>
+      <th>3</th>
+      <td>1470</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>2.860016</td>
+      <td>43.702814</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1470</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>2.145202</td>
+      <td>24.587202</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1470</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>1.716358</td>
+      <td>15.739405</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1470</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>1.430498</td>
+      <td>10.933195</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1470</td>
+      <td>0.1470</td>
+      <td>42.742757</td>
+      <td>1.226344</td>
+      <td>8.035203</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">100000</th>
+      <th>15</th>
+      <td>1470</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.057357</td>
+      <td>0.175773</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1470</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.053794</td>
+      <td>0.154610</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1470</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.050651</td>
+      <td>0.137070</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1470</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.047858</td>
+      <td>0.122372</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1470</td>
+      <td>0.0147</td>
+      <td>427.427572</td>
+      <td>0.045361</td>
+      <td>0.109933</td>
+    </tr>
+  </tbody>
+</table>
+<p>1547 rows × 5 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="data-wrangling">
+<h2>Data Wrangling<a class="headerlink" href="#data-wrangling" title="Link to this heading">#</a></h2>
+<p>There a loads of built-in functions in <strong>pandas</strong> to manipulate data frames, including summarising, handling missing data, combining data, reshaping data or grouping data, and more. <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheat sheets can be very useful to get an overview</a></p>
+</section>
+<section id="pandas-plotting">
+<h2>Pandas Plotting<a class="headerlink" href="#pandas-plotting" title="Link to this heading">#</a></h2>
+<p>Pandas has some built-in basic plotting capabilities. Here some examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nfs</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bw&quot;</span><span class="p">,</span> <span class="c1">#x and y axes</span>
+                               <span class="n">c</span><span class="o">=</span><span class="s2">&quot;rnf&quot;</span><span class="p">,</span> <span class="c1">#color vairable</span>
+                               <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="c1">#colorscale limits</span>
+                               <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="c1">#size of scatter</span>
+                               <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">,</span> <span class="c1">#x axis title</span>
+                               <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Beam width (°)&quot;</span><span class="p">)</span> <span class="c1">#y axis title</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Frequency (Hz)&#39;, ylabel=&#39;Beam width (°)&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/412f42fef0617f60208bc88e23c8c72947723605361edb48fb182a63553e1138.png" src="_images/412f42fef0617f60208bc88e23c8c72947723605361edb48fb182a63553e1138.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nfs</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;rnf&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;bw&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Beam width (°)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Nearfield (m)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;rnf&#39;}, xlabel=&#39;Beam width (°)&#39;, ylabel=&#39;Nearfield (m)&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/056655808d688a2158bbcfa37dafcfc8ceb836da29a50d79f1dd0d96f413813b.png" src="_images/056655808d688a2158bbcfa37dafcfc8ceb836da29a50d79f1dd0d96f413813b.png" />
+</div>
+</div>
+<section id="heatmaps">
+<h3>Heatmaps<a class="headerlink" href="#heatmaps" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is the easiest way to create heatmaps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>  
+
+<span class="c1">#we use the rnf column, then we reset the index, to use frequency and bw as our new rows (index) and columns.</span>
+<span class="n">nfs_piv</span> <span class="o">=</span> <span class="n">nfs</span><span class="o">.</span><span class="n">rnf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;bw&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">nfs_piv</span><span class="p">,</span> <span class="c1">#data to use</span>
+            <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="c1">#add values to cells</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="c1">#minimum color value</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="c1">#maximum color value</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span> <span class="c1">#colorscale</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;None-bw&#39;, ylabel=&#39;frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/737b2327b28a9bbb62874588e03911e8d684028cd7425917cb8f5d0f8d25810f.png" src="_images/737b2327b28a9bbb62874588e03911e8d684028cd7425917cb8f5d0f8d25810f.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="comparison-of-pandas-and-r-dplyr">
+<h2>Comparison of Pandas and R dplyr<a class="headerlink" href="#comparison-of-pandas-and-r-dplyr" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>R dplyr</p></th>
+<th class="head"><p>Python pandas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Loading Library</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">library(dplyr)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reading Data</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">&lt;-</span> <span class="pre">read.csv(&quot;file.csv&quot;)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">pd.read_csv(&quot;file.csv&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Selecting Columns</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">select(col1,</span> <span class="pre">col2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[['col1',</span> <span class="pre">'col2']]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Filtering Rows</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">filter(col1</span> <span class="pre">&gt;</span> <span class="pre">10)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[df['col1']</span> <span class="pre">&gt;</span> <span class="pre">10]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mutating (Adding Columns)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">mutate(new_col</span> <span class="pre">=</span> <span class="pre">col1</span> <span class="pre">*</span> <span class="pre">2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df['new_col']</span> <span class="pre">=</span> <span class="pre">df['col1']</span> <span class="pre">*</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Renaming Columns</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">rename(new_col1</span> <span class="pre">=</span> <span class="pre">old_col1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.rename(columns={'old_col1':</span> <span class="pre">'new_col1'})</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Grouping Data</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">group_by(col1)</span> <span class="pre">%&gt;%</span> <span class="pre">summarize(mean_val</span> <span class="pre">=</span> <span class="pre">mean(col2))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.groupby('col1')['col2'].mean().reset_index()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sorting Data</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">arrange(col1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.sort_values('col1')</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Dropping Columns</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">select(-col1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.drop(columns=['col1'])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Counting Rows</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">count(col1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df['col1'].value_counts()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pivoting (Wider Format)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">spread(key,</span> <span class="pre">value)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.pivot(index,</span> <span class="pre">columns,</span> <span class="pre">values)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pivoting (Longer Format)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">gather(key,</span> <span class="pre">value,</span> <span class="pre">col1:col3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.melt(id_vars,</span> <span class="pre">var_name,</span> <span class="pre">value_name)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Merging (Join)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df1</span> <span class="pre">%&gt;%</span> <span class="pre">left_join(df2,</span> <span class="pre">by</span> <span class="pre">=</span> <span class="pre">&quot;key&quot;)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df1.merge(df2,</span> <span class="pre">on='key',</span> <span class="pre">how='left')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Distinct Rows</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">distinct()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.drop_duplicates()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Replacing NA Values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">replace_na(list(col1</span> <span class="pre">=</span> <span class="pre">0))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.fillna({'col1':</span> <span class="pre">0})</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Pandas</p></th>
+<th class="head"><p>dplyr</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Multi-indexing (Hierarchical Indexing)</strong></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Time Series Handling</strong></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Merging on Multiple Columns</strong></p></td>
+<td><p>✅</p></td>
+<td><p>✅ (but less flexible)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Missing Value Handling</strong></p></td>
+<td><p>✅</p></td>
+<td><p>✅ (but more manual)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Rolling/Expanding Windows</strong></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Performance Optimizations (Cython, NumPy)</strong></p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pipe Operator (<code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code>) for readibility</strong></p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grouped Mutate</strong></p></td>
+<td><p>❌ (requires lambda)</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tidy Data Transformations</strong></p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Verb-Based Function Naming</strong></p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Multiple Summaries Easily</strong></p></td>
+<td><p>❌ (requires dict/lambda)</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Factor (Categorical) Handling</strong></p></td>
+<td><p>❌ (manual)</p></td>
+<td><p>✅ (native)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Xarray  </span>
+
+<span class="n">Xarray</span> <span class="n">provides</span> <span class="n">an</span> <span class="n">excellent</span> <span class="p">[</span><span class="n">introduction</span> <span class="n">tutorial</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">tutorial</span><span class="o">.</span><span class="n">xarray</span><span class="o">.</span><span class="n">dev</span><span class="o">/</span><span class="n">intro</span><span class="o">.</span><span class="n">html</span><span class="p">)</span>  
+
+<span class="n">Xarray</span> <span class="n">mainly</span> <span class="n">works</span> <span class="k">with</span> <span class="n">Datasets</span> <span class="ow">and</span> <span class="n">DataArrays</span><span class="o">.</span> <span class="n">Datasets</span> <span class="n">are</span> <span class="n">containers</span> <span class="n">of</span> <span class="n">DataArrays</span><span class="o">.</span>  
+
+<span class="n">Let</span><span class="s1">&#39;s illustrate this by an MVBS dataset, created within echopype:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span> 
+
+<span class="n">mvbs</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;./python_plotting_files/mvbs.nc&quot;</span><span class="p">)</span>
+<span class="n">mvbs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 668kB
+Dimensions:            (channel: 4, ping_time: 56, depth: 370)
+Coordinates:
+  * ping_time          (ping_time) datetime64[ns] 448B 2018-03-08T17:37:40 .....
+  * channel            (channel) &lt;U37 592B &#x27;GPT  18 kHz 00907206dc7f 1-1 ES18...
+  * depth              (depth) float64 3kB 0.0 1.0 2.0 3.0 ... 367.0 368.0 369.0
+    distance           (ping_time) float64 448B ...
+Data variables:
+    Sv                 (channel, ping_time, depth) float64 663kB ...
+    latitude           (ping_time) float64 448B ...
+    longitude          (ping_time) float64 448B ...
+    frequency_nominal  (channel) float64 32B ...
+Attributes:
+    processing_software_name:     echopype
+    processing_software_version:  0.10.0
+    processing_time:              2025-04-02T16:37:50Z
+    processing_function:          commongrid.compute_MVBS
+    processing_level:             Level 3A
+    processing_level_url:         https://echopype.readthedocs.io/en/stable/p...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-bc63f5a1-c391-41b5-aa04-bba53dce0b96' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bc63f5a1-c391-41b5-aa04-bba53dce0b96' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>channel</span>: 4</li><li><span class='xr-has-index'>ping_time</span>: 56</li><li><span class='xr-has-index'>depth</span>: 370</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-532fc690-4cb7-4460-84c5-b228981e6dc6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-532fc690-4cb7-4460-84c5-b228981e6dc6' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>ping_time</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2018-03-08T17:37:40 ... 2018-03-...</div><input id='attrs-666928f7-d5b5-4f7a-83ce-2e71d1f826aa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-666928f7-d5b5-4f7a-83ce-2e71d1f826aa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7e991bd-db50-425a-9ccb-4e2c1e983217' class='xr-var-data-in' type='checkbox'><label for='data-e7e991bd-db50-425a-9ccb-4e2c1e983217' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Ping time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2018-03-08T17:37:40.000000000&#x27;, &#x27;2018-03-08T17:38:00.000000000&#x27;,
+       &#x27;2018-03-08T17:38:20.000000000&#x27;, &#x27;2018-03-08T17:38:40.000000000&#x27;,
+       &#x27;2018-03-08T17:39:00.000000000&#x27;, &#x27;2018-03-08T17:39:20.000000000&#x27;,
+       &#x27;2018-03-08T17:39:40.000000000&#x27;, &#x27;2018-03-08T17:40:00.000000000&#x27;,
+       &#x27;2018-03-08T17:40:20.000000000&#x27;, &#x27;2018-03-08T17:40:40.000000000&#x27;,
+       &#x27;2018-03-08T17:41:00.000000000&#x27;, &#x27;2018-03-08T17:41:20.000000000&#x27;,
+       &#x27;2018-03-08T17:41:40.000000000&#x27;, &#x27;2018-03-08T17:42:00.000000000&#x27;,
+       &#x27;2018-03-08T17:42:20.000000000&#x27;, &#x27;2018-03-08T17:42:40.000000000&#x27;,
+       &#x27;2018-03-08T17:43:00.000000000&#x27;, &#x27;2018-03-08T17:43:20.000000000&#x27;,
+       &#x27;2018-03-08T17:43:40.000000000&#x27;, &#x27;2018-03-08T17:44:00.000000000&#x27;,
+       &#x27;2018-03-08T17:44:20.000000000&#x27;, &#x27;2018-03-08T17:44:40.000000000&#x27;,
+       &#x27;2018-03-08T17:45:00.000000000&#x27;, &#x27;2018-03-08T17:45:20.000000000&#x27;,
+       &#x27;2018-03-08T17:45:40.000000000&#x27;, &#x27;2018-03-08T17:46:00.000000000&#x27;,
+       &#x27;2018-03-08T17:46:20.000000000&#x27;, &#x27;2018-03-08T17:46:40.000000000&#x27;,
+       &#x27;2018-03-08T17:47:00.000000000&#x27;, &#x27;2018-03-08T17:47:20.000000000&#x27;,
+       &#x27;2018-03-08T17:47:40.000000000&#x27;, &#x27;2018-03-08T17:48:00.000000000&#x27;,
+       &#x27;2018-03-08T17:48:20.000000000&#x27;, &#x27;2018-03-08T17:48:40.000000000&#x27;,
+       &#x27;2018-03-08T17:49:00.000000000&#x27;, &#x27;2018-03-08T17:49:20.000000000&#x27;,
+       &#x27;2018-03-08T17:49:40.000000000&#x27;, &#x27;2018-03-08T17:50:00.000000000&#x27;,
+       &#x27;2018-03-08T17:50:20.000000000&#x27;, &#x27;2018-03-08T17:50:40.000000000&#x27;,
+       &#x27;2018-03-08T17:51:00.000000000&#x27;, &#x27;2018-03-08T17:51:20.000000000&#x27;,
+       &#x27;2018-03-08T17:51:40.000000000&#x27;, &#x27;2018-03-08T17:52:00.000000000&#x27;,
+       &#x27;2018-03-08T17:52:20.000000000&#x27;, &#x27;2018-03-08T17:52:40.000000000&#x27;,
+       &#x27;2018-03-08T17:53:00.000000000&#x27;, &#x27;2018-03-08T17:53:20.000000000&#x27;,
+       &#x27;2018-03-08T17:53:40.000000000&#x27;, &#x27;2018-03-08T17:54:00.000000000&#x27;,
+       &#x27;2018-03-08T17:54:20.000000000&#x27;, &#x27;2018-03-08T17:54:40.000000000&#x27;,
+       &#x27;2018-03-08T17:55:00.000000000&#x27;, &#x27;2018-03-08T17:55:20.000000000&#x27;,
+       &#x27;2018-03-08T17:55:40.000000000&#x27;, &#x27;2018-03-08T17:56:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>channel</span></div><div class='xr-var-dims'>(channel)</div><div class='xr-var-dtype'>&lt;U37</div><div class='xr-var-preview xr-preview'>&#x27;GPT  18 kHz 00907206dc7f 1-1 ES...</div><input id='attrs-2367b572-5c18-44bf-acea-2076670e833a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2367b572-5c18-44bf-acea-2076670e833a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e92d97ff-f17b-4915-b085-ce86d3266297' class='xr-var-data-in' type='checkbox'><label for='data-e92d97ff-f17b-4915-b085-ce86d3266297' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Vendor channel ID</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;GPT  18 kHz 00907206dc7f 1-1 ES18-11&#x27;,
+       &#x27;GPT  38 kHz 009072057008 2-1 ES38B&#x27;,
+       &#x27;GPT 120 kHz 00907206dc98 3-1 ES120-7C&#x27;,
+       &#x27;GPT 200 kHz 00907206cef2 4-1 ES200-7C&#x27;], dtype=&#x27;&lt;U37&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 1.0 2.0 ... 367.0 368.0 369.0</div><input id='attrs-e5f77ca9-09b1-45e0-a84d-bba1ec771ed9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e5f77ca9-09b1-45e0-a84d-bba1ec771ed9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cbf5fbcd-7dec-4199-95dc-469daa01a25c' class='xr-var-data-in' type='checkbox'><label for='data-cbf5fbcd-7dec-4199-95dc-469daa01a25c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Range distance</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([  0.,   1.,   2., ..., 367., 368., 369.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>distance</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b082b76b-03c8-4f56-8590-4b2991ae6817' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b082b76b-03c8-4f56-8590-4b2991ae6817' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-863f5821-4f4b-49e4-9a87-e26cf4eac6d4' class='xr-var-data-in' type='checkbox'><label for='data-863f5821-4f4b-49e4-9a87-e26cf4eac6d4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[56 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-34cb7bfe-ef30-4ae8-ba9e-febd0a8b42fb' class='xr-section-summary-in' type='checkbox'  checked><label for='section-34cb7bfe-ef30-4ae8-ba9e-febd0a8b42fb' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Sv</span></div><div class='xr-var-dims'>(channel, ping_time, depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5e2a1cb6-72ff-4562-bdb2-f265310e4828' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5e2a1cb6-72ff-4562-bdb2-f265310e4828' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ce21f012-165f-45f0-9b71-b8601d38c960' class='xr-var-data-in' type='checkbox'><label for='data-ce21f012-165f-45f0-9b71-b8601d38c960' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Mean volume backscattering strength (MVBS, mean Sv re 1 m-1)</dd><dt><span>units :</span></dt><dd>dB</dd><dt><span>cell_methods :</span></dt><dd>ping_time: mean (interval: 20 second comment: ping_time is the interval start) depth: mean (interval: 1.0 meter comment: depth is the interval start)</dd><dt><span>binning_mode :</span></dt><dd>physical units</dd><dt><span>range_meter_interval :</span></dt><dd>1.0m</dd><dt><span>ping_time_interval :</span></dt><dd>20s</dd></dl></div><div class='xr-var-data'><pre>[82880 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0723b7b9-70e2-4286-9395-f949b6370df7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0723b7b9-70e2-4286-9395-f949b6370df7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-464e689c-1a28-4b2e-b5b3-138c45911075' class='xr-var-data-in' type='checkbox'><label for='data-464e689c-1a28-4b2e-b5b3-138c45911075' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Platform latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>(-90.0, 90.0)</dd><dt><span>history :</span></dt><dd>2025-04-02 16:28:06.141594 +00:00. Interpolated or propagated from Platform latitude/longitude.</dd></dl></div><div class='xr-var-data'><pre>[56 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f42d2b7e-462b-4294-9d1c-1bba85825332' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f42d2b7e-462b-4294-9d1c-1bba85825332' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bd0dc1a1-dbf7-43dd-b8d9-189544c64c3a' class='xr-var-data-in' type='checkbox'><label for='data-bd0dc1a1-dbf7-43dd-b8d9-189544c64c3a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Platform longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>(-180.0, 180.0)</dd><dt><span>history :</span></dt><dd>2025-04-02 16:28:06.141594 +00:00. Interpolated or propagated from Platform latitude/longitude.</dd></dl></div><div class='xr-var-data'><pre>[56 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>frequency_nominal</span></div><div class='xr-var-dims'>(channel)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7140400f-04a2-4ac4-b267-b5e061db4a12' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7140400f-04a2-4ac4-b267-b5e061db4a12' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5adeff36-00be-4262-abc2-981b87c6c2d8' class='xr-var-data-in' type='checkbox'><label for='data-5adeff36-00be-4262-abc2-981b87c6c2d8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>Hz</dd><dt><span>long_name :</span></dt><dd>Transducer frequency</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>standard_name :</span></dt><dd>sound_frequency</dd></dl></div><div class='xr-var-data'><pre>[4 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ee99f21e-743c-42b4-bc3f-a3feb0c976a4' class='xr-section-summary-in' type='checkbox'  ><label for='section-ee99f21e-743c-42b4-bc3f-a3feb0c976a4' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>ping_time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-d2ed445e-c8c5-4b7d-999c-acfb84be16c9' class='xr-index-data-in' type='checkbox'/><label for='index-d2ed445e-c8c5-4b7d-999c-acfb84be16c9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2018-03-08 17:37:40&#x27;, &#x27;2018-03-08 17:38:00&#x27;,
+               &#x27;2018-03-08 17:38:20&#x27;, &#x27;2018-03-08 17:38:40&#x27;,
+               &#x27;2018-03-08 17:39:00&#x27;, &#x27;2018-03-08 17:39:20&#x27;,
+               &#x27;2018-03-08 17:39:40&#x27;, &#x27;2018-03-08 17:40:00&#x27;,
+               &#x27;2018-03-08 17:40:20&#x27;, &#x27;2018-03-08 17:40:40&#x27;,
+               &#x27;2018-03-08 17:41:00&#x27;, &#x27;2018-03-08 17:41:20&#x27;,
+               &#x27;2018-03-08 17:41:40&#x27;, &#x27;2018-03-08 17:42:00&#x27;,
+               &#x27;2018-03-08 17:42:20&#x27;, &#x27;2018-03-08 17:42:40&#x27;,
+               &#x27;2018-03-08 17:43:00&#x27;, &#x27;2018-03-08 17:43:20&#x27;,
+               &#x27;2018-03-08 17:43:40&#x27;, &#x27;2018-03-08 17:44:00&#x27;,
+               &#x27;2018-03-08 17:44:20&#x27;, &#x27;2018-03-08 17:44:40&#x27;,
+               &#x27;2018-03-08 17:45:00&#x27;, &#x27;2018-03-08 17:45:20&#x27;,
+               &#x27;2018-03-08 17:45:40&#x27;, &#x27;2018-03-08 17:46:00&#x27;,
+               &#x27;2018-03-08 17:46:20&#x27;, &#x27;2018-03-08 17:46:40&#x27;,
+               &#x27;2018-03-08 17:47:00&#x27;, &#x27;2018-03-08 17:47:20&#x27;,
+               &#x27;2018-03-08 17:47:40&#x27;, &#x27;2018-03-08 17:48:00&#x27;,
+               &#x27;2018-03-08 17:48:20&#x27;, &#x27;2018-03-08 17:48:40&#x27;,
+               &#x27;2018-03-08 17:49:00&#x27;, &#x27;2018-03-08 17:49:20&#x27;,
+               &#x27;2018-03-08 17:49:40&#x27;, &#x27;2018-03-08 17:50:00&#x27;,
+               &#x27;2018-03-08 17:50:20&#x27;, &#x27;2018-03-08 17:50:40&#x27;,
+               &#x27;2018-03-08 17:51:00&#x27;, &#x27;2018-03-08 17:51:20&#x27;,
+               &#x27;2018-03-08 17:51:40&#x27;, &#x27;2018-03-08 17:52:00&#x27;,
+               &#x27;2018-03-08 17:52:20&#x27;, &#x27;2018-03-08 17:52:40&#x27;,
+               &#x27;2018-03-08 17:53:00&#x27;, &#x27;2018-03-08 17:53:20&#x27;,
+               &#x27;2018-03-08 17:53:40&#x27;, &#x27;2018-03-08 17:54:00&#x27;,
+               &#x27;2018-03-08 17:54:20&#x27;, &#x27;2018-03-08 17:54:40&#x27;,
+               &#x27;2018-03-08 17:55:00&#x27;, &#x27;2018-03-08 17:55:20&#x27;,
+               &#x27;2018-03-08 17:55:40&#x27;, &#x27;2018-03-08 17:56:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;ping_time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>channel</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-4cd866b6-983d-4bf2-97df-5620d9b2be6e' class='xr-index-data-in' type='checkbox'/><label for='index-4cd866b6-983d-4bf2-97df-5620d9b2be6e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;GPT  18 kHz 00907206dc7f 1-1 ES18-11&#x27;,
+       &#x27;GPT  38 kHz 009072057008 2-1 ES38B&#x27;,
+       &#x27;GPT 120 kHz 00907206dc98 3-1 ES120-7C&#x27;,
+       &#x27;GPT 200 kHz 00907206cef2 4-1 ES200-7C&#x27;],
+      dtype=&#x27;object&#x27;, name=&#x27;channel&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>depth</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-46b2b86b-ea1d-42f2-9eaf-7c6d2570dfa6' class='xr-index-data-in' type='checkbox'/><label for='index-46b2b86b-ea1d-42f2-9eaf-7c6d2570dfa6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.0,   1.0,   2.0,   3.0,   4.0,   5.0,   6.0,   7.0,   8.0,   9.0,
+       ...
+       360.0, 361.0, 362.0, 363.0, 364.0, 365.0, 366.0, 367.0, 368.0, 369.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;depth&#x27;, length=370))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f3d16891-19ab-4a1d-ad28-99ebd907ee54' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f3d16891-19ab-4a1d-ad28-99ebd907ee54' class='xr-section-summary' >Attributes: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>processing_software_name :</span></dt><dd>echopype</dd><dt><span>processing_software_version :</span></dt><dd>0.10.0</dd><dt><span>processing_time :</span></dt><dd>2025-04-02T16:37:50Z</dd><dt><span>processing_function :</span></dt><dd>commongrid.compute_MVBS</dd><dt><span>processing_level :</span></dt><dd>Level 3A</dd><dt><span>processing_level_url :</span></dt><dd>https://echopype.readthedocs.io/en/stable/processing-levels.html</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="dataarray">
+<h2>DataArray<a class="headerlink" href="#dataarray" title="Link to this heading">#</a></h2>
+<p>We can pull out the dataarray Sv using <code class="docutils literal notranslate"><span class="pre">.</span></code> notation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span> <span class="o">=</span> <span class="n">mvbs</span><span class="o">.</span><span class="n">Sv</span>
+<span class="n">sv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;Sv&#x27; (channel: 4, ping_time: 56, depth: 370)&gt; Size: 663kB
+[82880 values with dtype=float64]
+Coordinates:
+  * ping_time  (ping_time) datetime64[ns] 448B 2018-03-08T17:37:40 ... 2018-0...
+  * channel    (channel) &lt;U37 592B &#x27;GPT  18 kHz 00907206dc7f 1-1 ES18-11&#x27; ......
+  * depth      (depth) float64 3kB 0.0 1.0 2.0 3.0 ... 366.0 367.0 368.0 369.0
+    distance   (ping_time) float64 448B ...
+Attributes:
+    long_name:             Mean volume backscattering strength (MVBS, mean Sv...
+    units:                 dB
+    cell_methods:          ping_time: mean (interval: 20 second comment: ping...
+    binning_mode:          physical units
+    range_meter_interval:  1.0m
+    ping_time_interval:    20s</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Sv'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>channel</span>: 4</li><li><span class='xr-has-index'>ping_time</span>: 56</li><li><span class='xr-has-index'>depth</span>: 370</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-4d156179-2173-4f3a-a009-741b39a94c15' class='xr-array-in' type='checkbox' checked><label for='section-4d156179-2173-4f3a-a009-741b39a94c15' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[82880 values with dtype=float64]</pre></div></div></li><li class='xr-section-item'><input id='section-a0314f48-81d9-493a-b9d2-67013df1a636' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a0314f48-81d9-493a-b9d2-67013df1a636' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>ping_time</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2018-03-08T17:37:40 ... 2018-03-...</div><input id='attrs-d3195dbb-9ee7-45ec-a08b-cef55b50b107' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d3195dbb-9ee7-45ec-a08b-cef55b50b107' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d1f1e5fa-06dc-4d73-9037-cdbb0614b6b4' class='xr-var-data-in' type='checkbox'><label for='data-d1f1e5fa-06dc-4d73-9037-cdbb0614b6b4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Ping time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2018-03-08T17:37:40.000000000&#x27;, &#x27;2018-03-08T17:38:00.000000000&#x27;,
+       &#x27;2018-03-08T17:38:20.000000000&#x27;, &#x27;2018-03-08T17:38:40.000000000&#x27;,
+       &#x27;2018-03-08T17:39:00.000000000&#x27;, &#x27;2018-03-08T17:39:20.000000000&#x27;,
+       &#x27;2018-03-08T17:39:40.000000000&#x27;, &#x27;2018-03-08T17:40:00.000000000&#x27;,
+       &#x27;2018-03-08T17:40:20.000000000&#x27;, &#x27;2018-03-08T17:40:40.000000000&#x27;,
+       &#x27;2018-03-08T17:41:00.000000000&#x27;, &#x27;2018-03-08T17:41:20.000000000&#x27;,
+       &#x27;2018-03-08T17:41:40.000000000&#x27;, &#x27;2018-03-08T17:42:00.000000000&#x27;,
+       &#x27;2018-03-08T17:42:20.000000000&#x27;, &#x27;2018-03-08T17:42:40.000000000&#x27;,
+       &#x27;2018-03-08T17:43:00.000000000&#x27;, &#x27;2018-03-08T17:43:20.000000000&#x27;,
+       &#x27;2018-03-08T17:43:40.000000000&#x27;, &#x27;2018-03-08T17:44:00.000000000&#x27;,
+       &#x27;2018-03-08T17:44:20.000000000&#x27;, &#x27;2018-03-08T17:44:40.000000000&#x27;,
+       &#x27;2018-03-08T17:45:00.000000000&#x27;, &#x27;2018-03-08T17:45:20.000000000&#x27;,
+       &#x27;2018-03-08T17:45:40.000000000&#x27;, &#x27;2018-03-08T17:46:00.000000000&#x27;,
+       &#x27;2018-03-08T17:46:20.000000000&#x27;, &#x27;2018-03-08T17:46:40.000000000&#x27;,
+       &#x27;2018-03-08T17:47:00.000000000&#x27;, &#x27;2018-03-08T17:47:20.000000000&#x27;,
+       &#x27;2018-03-08T17:47:40.000000000&#x27;, &#x27;2018-03-08T17:48:00.000000000&#x27;,
+       &#x27;2018-03-08T17:48:20.000000000&#x27;, &#x27;2018-03-08T17:48:40.000000000&#x27;,
+       &#x27;2018-03-08T17:49:00.000000000&#x27;, &#x27;2018-03-08T17:49:20.000000000&#x27;,
+       &#x27;2018-03-08T17:49:40.000000000&#x27;, &#x27;2018-03-08T17:50:00.000000000&#x27;,
+       &#x27;2018-03-08T17:50:20.000000000&#x27;, &#x27;2018-03-08T17:50:40.000000000&#x27;,
+       &#x27;2018-03-08T17:51:00.000000000&#x27;, &#x27;2018-03-08T17:51:20.000000000&#x27;,
+       &#x27;2018-03-08T17:51:40.000000000&#x27;, &#x27;2018-03-08T17:52:00.000000000&#x27;,
+       &#x27;2018-03-08T17:52:20.000000000&#x27;, &#x27;2018-03-08T17:52:40.000000000&#x27;,
+       &#x27;2018-03-08T17:53:00.000000000&#x27;, &#x27;2018-03-08T17:53:20.000000000&#x27;,
+       &#x27;2018-03-08T17:53:40.000000000&#x27;, &#x27;2018-03-08T17:54:00.000000000&#x27;,
+       &#x27;2018-03-08T17:54:20.000000000&#x27;, &#x27;2018-03-08T17:54:40.000000000&#x27;,
+       &#x27;2018-03-08T17:55:00.000000000&#x27;, &#x27;2018-03-08T17:55:20.000000000&#x27;,
+       &#x27;2018-03-08T17:55:40.000000000&#x27;, &#x27;2018-03-08T17:56:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>channel</span></div><div class='xr-var-dims'>(channel)</div><div class='xr-var-dtype'>&lt;U37</div><div class='xr-var-preview xr-preview'>&#x27;GPT  18 kHz 00907206dc7f 1-1 ES...</div><input id='attrs-f0655895-ecdf-4928-8939-c04c110c1f9f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f0655895-ecdf-4928-8939-c04c110c1f9f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5dbd3e95-f2c9-4dcb-aaf4-d6213750024d' class='xr-var-data-in' type='checkbox'><label for='data-5dbd3e95-f2c9-4dcb-aaf4-d6213750024d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Vendor channel ID</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;GPT  18 kHz 00907206dc7f 1-1 ES18-11&#x27;,
+       &#x27;GPT  38 kHz 009072057008 2-1 ES38B&#x27;,
+       &#x27;GPT 120 kHz 00907206dc98 3-1 ES120-7C&#x27;,
+       &#x27;GPT 200 kHz 00907206cef2 4-1 ES200-7C&#x27;], dtype=&#x27;&lt;U37&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 1.0 2.0 ... 367.0 368.0 369.0</div><input id='attrs-e2b501d2-5ffc-4dc5-a29d-a9da0bb369aa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e2b501d2-5ffc-4dc5-a29d-a9da0bb369aa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-476a4685-f14b-4833-9dd8-1a114bef4d2c' class='xr-var-data-in' type='checkbox'><label for='data-476a4685-f14b-4833-9dd8-1a114bef4d2c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Range distance</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([  0.,   1.,   2., ..., 367., 368., 369.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>distance</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4c5f303f-1ebf-4df7-a3f4-1567ffdce01b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4c5f303f-1ebf-4df7-a3f4-1567ffdce01b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-28ee03b3-749c-4ba0-8586-1a4f275fcc6b' class='xr-var-data-in' type='checkbox'><label for='data-28ee03b3-749c-4ba0-8586-1a4f275fcc6b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[56 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c98d93e7-d762-431a-853c-be942fa8fd8c' class='xr-section-summary-in' type='checkbox'  ><label for='section-c98d93e7-d762-431a-853c-be942fa8fd8c' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>ping_time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-76f41404-920f-4ade-b4ff-2ae2643d3f86' class='xr-index-data-in' type='checkbox'/><label for='index-76f41404-920f-4ade-b4ff-2ae2643d3f86' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2018-03-08 17:37:40&#x27;, &#x27;2018-03-08 17:38:00&#x27;,
+               &#x27;2018-03-08 17:38:20&#x27;, &#x27;2018-03-08 17:38:40&#x27;,
+               &#x27;2018-03-08 17:39:00&#x27;, &#x27;2018-03-08 17:39:20&#x27;,
+               &#x27;2018-03-08 17:39:40&#x27;, &#x27;2018-03-08 17:40:00&#x27;,
+               &#x27;2018-03-08 17:40:20&#x27;, &#x27;2018-03-08 17:40:40&#x27;,
+               &#x27;2018-03-08 17:41:00&#x27;, &#x27;2018-03-08 17:41:20&#x27;,
+               &#x27;2018-03-08 17:41:40&#x27;, &#x27;2018-03-08 17:42:00&#x27;,
+               &#x27;2018-03-08 17:42:20&#x27;, &#x27;2018-03-08 17:42:40&#x27;,
+               &#x27;2018-03-08 17:43:00&#x27;, &#x27;2018-03-08 17:43:20&#x27;,
+               &#x27;2018-03-08 17:43:40&#x27;, &#x27;2018-03-08 17:44:00&#x27;,
+               &#x27;2018-03-08 17:44:20&#x27;, &#x27;2018-03-08 17:44:40&#x27;,
+               &#x27;2018-03-08 17:45:00&#x27;, &#x27;2018-03-08 17:45:20&#x27;,
+               &#x27;2018-03-08 17:45:40&#x27;, &#x27;2018-03-08 17:46:00&#x27;,
+               &#x27;2018-03-08 17:46:20&#x27;, &#x27;2018-03-08 17:46:40&#x27;,
+               &#x27;2018-03-08 17:47:00&#x27;, &#x27;2018-03-08 17:47:20&#x27;,
+               &#x27;2018-03-08 17:47:40&#x27;, &#x27;2018-03-08 17:48:00&#x27;,
+               &#x27;2018-03-08 17:48:20&#x27;, &#x27;2018-03-08 17:48:40&#x27;,
+               &#x27;2018-03-08 17:49:00&#x27;, &#x27;2018-03-08 17:49:20&#x27;,
+               &#x27;2018-03-08 17:49:40&#x27;, &#x27;2018-03-08 17:50:00&#x27;,
+               &#x27;2018-03-08 17:50:20&#x27;, &#x27;2018-03-08 17:50:40&#x27;,
+               &#x27;2018-03-08 17:51:00&#x27;, &#x27;2018-03-08 17:51:20&#x27;,
+               &#x27;2018-03-08 17:51:40&#x27;, &#x27;2018-03-08 17:52:00&#x27;,
+               &#x27;2018-03-08 17:52:20&#x27;, &#x27;2018-03-08 17:52:40&#x27;,
+               &#x27;2018-03-08 17:53:00&#x27;, &#x27;2018-03-08 17:53:20&#x27;,
+               &#x27;2018-03-08 17:53:40&#x27;, &#x27;2018-03-08 17:54:00&#x27;,
+               &#x27;2018-03-08 17:54:20&#x27;, &#x27;2018-03-08 17:54:40&#x27;,
+               &#x27;2018-03-08 17:55:00&#x27;, &#x27;2018-03-08 17:55:20&#x27;,
+               &#x27;2018-03-08 17:55:40&#x27;, &#x27;2018-03-08 17:56:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;ping_time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>channel</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-fc098670-1dc8-4455-9a93-ccee0232c680' class='xr-index-data-in' type='checkbox'/><label for='index-fc098670-1dc8-4455-9a93-ccee0232c680' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;GPT  18 kHz 00907206dc7f 1-1 ES18-11&#x27;,
+       &#x27;GPT  38 kHz 009072057008 2-1 ES38B&#x27;,
+       &#x27;GPT 120 kHz 00907206dc98 3-1 ES120-7C&#x27;,
+       &#x27;GPT 200 kHz 00907206cef2 4-1 ES200-7C&#x27;],
+      dtype=&#x27;object&#x27;, name=&#x27;channel&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>depth</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-1c532698-3e4d-4116-8757-dfedec546618' class='xr-index-data-in' type='checkbox'/><label for='index-1c532698-3e4d-4116-8757-dfedec546618' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.0,   1.0,   2.0,   3.0,   4.0,   5.0,   6.0,   7.0,   8.0,   9.0,
+       ...
+       360.0, 361.0, 362.0, 363.0, 364.0, 365.0, 366.0, 367.0, 368.0, 369.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;depth&#x27;, length=370))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b5f3813e-2e2f-4c1c-8a79-708576a787d5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b5f3813e-2e2f-4c1c-8a79-708576a787d5' class='xr-section-summary' >Attributes: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Mean volume backscattering strength (MVBS, mean Sv re 1 m-1)</dd><dt><span>units :</span></dt><dd>dB</dd><dt><span>cell_methods :</span></dt><dd>ping_time: mean (interval: 20 second comment: ping_time is the interval start) depth: mean (interval: 1.0 meter comment: depth is the interval start)</dd><dt><span>binning_mode :</span></dt><dd>physical units</dd><dt><span>range_meter_interval :</span></dt><dd>1.0m</dd><dt><span>ping_time_interval :</span></dt><dd>20s</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="dimensions">
+<h2>Dimensions<a class="headerlink" href="#dimensions" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.dims</span></code> - Dimensions, are the axes of the data, here the channel, ping_time and depth</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">dims</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;channel&#39;, &#39;ping_time&#39;, &#39;depth&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="coordinates">
+<h2>Coordinates<a class="headerlink" href="#coordinates" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.coords</span></code> contains the coordinate variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">coords</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinates:
+  * ping_time  (ping_time) datetime64[ns] 448B 2018-03-08T17:37:40 ... 2018-0...
+  * channel    (channel) &lt;U37 592B &#39;GPT  18 kHz 00907206dc7f 1-1 ES18-11&#39; ......
+  * depth      (depth) float64 3kB 0.0 1.0 2.0 3.0 ... 366.0 367.0 368.0 369.0
+    distance   (ping_time) float64 448B ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">ping_time</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;ping_time&#x27; (ping_time: 56)&gt; Size: 448B
+array([&#x27;2018-03-08T17:37:40.000000000&#x27;, &#x27;2018-03-08T17:38:00.000000000&#x27;,
+       &#x27;2018-03-08T17:38:20.000000000&#x27;, &#x27;2018-03-08T17:38:40.000000000&#x27;,
+       &#x27;2018-03-08T17:39:00.000000000&#x27;, &#x27;2018-03-08T17:39:20.000000000&#x27;,
+       &#x27;2018-03-08T17:39:40.000000000&#x27;, &#x27;2018-03-08T17:40:00.000000000&#x27;,
+       &#x27;2018-03-08T17:40:20.000000000&#x27;, &#x27;2018-03-08T17:40:40.000000000&#x27;,
+       &#x27;2018-03-08T17:41:00.000000000&#x27;, &#x27;2018-03-08T17:41:20.000000000&#x27;,
+       &#x27;2018-03-08T17:41:40.000000000&#x27;, &#x27;2018-03-08T17:42:00.000000000&#x27;,
+       &#x27;2018-03-08T17:42:20.000000000&#x27;, &#x27;2018-03-08T17:42:40.000000000&#x27;,
+       &#x27;2018-03-08T17:43:00.000000000&#x27;, &#x27;2018-03-08T17:43:20.000000000&#x27;,
+       &#x27;2018-03-08T17:43:40.000000000&#x27;, &#x27;2018-03-08T17:44:00.000000000&#x27;,
+       &#x27;2018-03-08T17:44:20.000000000&#x27;, &#x27;2018-03-08T17:44:40.000000000&#x27;,
+       &#x27;2018-03-08T17:45:00.000000000&#x27;, &#x27;2018-03-08T17:45:20.000000000&#x27;,
+       &#x27;2018-03-08T17:45:40.000000000&#x27;, &#x27;2018-03-08T17:46:00.000000000&#x27;,
+       &#x27;2018-03-08T17:46:20.000000000&#x27;, &#x27;2018-03-08T17:46:40.000000000&#x27;,
+       &#x27;2018-03-08T17:47:00.000000000&#x27;, &#x27;2018-03-08T17:47:20.000000000&#x27;,
+       &#x27;2018-03-08T17:47:40.000000000&#x27;, &#x27;2018-03-08T17:48:00.000000000&#x27;,
+       &#x27;2018-03-08T17:48:20.000000000&#x27;, &#x27;2018-03-08T17:48:40.000000000&#x27;,
+       &#x27;2018-03-08T17:49:00.000000000&#x27;, &#x27;2018-03-08T17:49:20.000000000&#x27;,
+       &#x27;2018-03-08T17:49:40.000000000&#x27;, &#x27;2018-03-08T17:50:00.000000000&#x27;,
+       &#x27;2018-03-08T17:50:20.000000000&#x27;, &#x27;2018-03-08T17:50:40.000000000&#x27;,
+       &#x27;2018-03-08T17:51:00.000000000&#x27;, &#x27;2018-03-08T17:51:20.000000000&#x27;,
+       &#x27;2018-03-08T17:51:40.000000000&#x27;, &#x27;2018-03-08T17:52:00.000000000&#x27;,
+       &#x27;2018-03-08T17:52:20.000000000&#x27;, &#x27;2018-03-08T17:52:40.000000000&#x27;,
+       &#x27;2018-03-08T17:53:00.000000000&#x27;, &#x27;2018-03-08T17:53:20.000000000&#x27;,
+       &#x27;2018-03-08T17:53:40.000000000&#x27;, &#x27;2018-03-08T17:54:00.000000000&#x27;,
+       &#x27;2018-03-08T17:54:20.000000000&#x27;, &#x27;2018-03-08T17:54:40.000000000&#x27;,
+       &#x27;2018-03-08T17:55:00.000000000&#x27;, &#x27;2018-03-08T17:55:20.000000000&#x27;,
+       &#x27;2018-03-08T17:55:40.000000000&#x27;, &#x27;2018-03-08T17:56:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)
+Coordinates:
+  * ping_time  (ping_time) datetime64[ns] 448B 2018-03-08T17:37:40 ... 2018-0...
+    distance   (ping_time) float64 448B ...
+Attributes:
+    long_name:      Ping time
+    standard_name:  time
+    axis:           T</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'ping_time'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>ping_time</span>: 56</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-c4398fdc-06d6-4975-9d49-59ee2c933cdf' class='xr-array-in' type='checkbox' checked><label for='section-c4398fdc-06d6-4975-9d49-59ee2c933cdf' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>2018-03-08T17:37:40 2018-03-08T17:38:00 ... 2018-03-08T17:56:00</span></div><div class='xr-array-data'><pre>array([&#x27;2018-03-08T17:37:40.000000000&#x27;, &#x27;2018-03-08T17:38:00.000000000&#x27;,
+       &#x27;2018-03-08T17:38:20.000000000&#x27;, &#x27;2018-03-08T17:38:40.000000000&#x27;,
+       &#x27;2018-03-08T17:39:00.000000000&#x27;, &#x27;2018-03-08T17:39:20.000000000&#x27;,
+       &#x27;2018-03-08T17:39:40.000000000&#x27;, &#x27;2018-03-08T17:40:00.000000000&#x27;,
+       &#x27;2018-03-08T17:40:20.000000000&#x27;, &#x27;2018-03-08T17:40:40.000000000&#x27;,
+       &#x27;2018-03-08T17:41:00.000000000&#x27;, &#x27;2018-03-08T17:41:20.000000000&#x27;,
+       &#x27;2018-03-08T17:41:40.000000000&#x27;, &#x27;2018-03-08T17:42:00.000000000&#x27;,
+       &#x27;2018-03-08T17:42:20.000000000&#x27;, &#x27;2018-03-08T17:42:40.000000000&#x27;,
+       &#x27;2018-03-08T17:43:00.000000000&#x27;, &#x27;2018-03-08T17:43:20.000000000&#x27;,
+       &#x27;2018-03-08T17:43:40.000000000&#x27;, &#x27;2018-03-08T17:44:00.000000000&#x27;,
+       &#x27;2018-03-08T17:44:20.000000000&#x27;, &#x27;2018-03-08T17:44:40.000000000&#x27;,
+       &#x27;2018-03-08T17:45:00.000000000&#x27;, &#x27;2018-03-08T17:45:20.000000000&#x27;,
+       &#x27;2018-03-08T17:45:40.000000000&#x27;, &#x27;2018-03-08T17:46:00.000000000&#x27;,
+       &#x27;2018-03-08T17:46:20.000000000&#x27;, &#x27;2018-03-08T17:46:40.000000000&#x27;,
+       &#x27;2018-03-08T17:47:00.000000000&#x27;, &#x27;2018-03-08T17:47:20.000000000&#x27;,
+       &#x27;2018-03-08T17:47:40.000000000&#x27;, &#x27;2018-03-08T17:48:00.000000000&#x27;,
+       &#x27;2018-03-08T17:48:20.000000000&#x27;, &#x27;2018-03-08T17:48:40.000000000&#x27;,
+       &#x27;2018-03-08T17:49:00.000000000&#x27;, &#x27;2018-03-08T17:49:20.000000000&#x27;,
+       &#x27;2018-03-08T17:49:40.000000000&#x27;, &#x27;2018-03-08T17:50:00.000000000&#x27;,
+       &#x27;2018-03-08T17:50:20.000000000&#x27;, &#x27;2018-03-08T17:50:40.000000000&#x27;,
+       &#x27;2018-03-08T17:51:00.000000000&#x27;, &#x27;2018-03-08T17:51:20.000000000&#x27;,
+       &#x27;2018-03-08T17:51:40.000000000&#x27;, &#x27;2018-03-08T17:52:00.000000000&#x27;,
+       &#x27;2018-03-08T17:52:20.000000000&#x27;, &#x27;2018-03-08T17:52:40.000000000&#x27;,
+       &#x27;2018-03-08T17:53:00.000000000&#x27;, &#x27;2018-03-08T17:53:20.000000000&#x27;,
+       &#x27;2018-03-08T17:53:40.000000000&#x27;, &#x27;2018-03-08T17:54:00.000000000&#x27;,
+       &#x27;2018-03-08T17:54:20.000000000&#x27;, &#x27;2018-03-08T17:54:40.000000000&#x27;,
+       &#x27;2018-03-08T17:55:00.000000000&#x27;, &#x27;2018-03-08T17:55:20.000000000&#x27;,
+       &#x27;2018-03-08T17:55:40.000000000&#x27;, &#x27;2018-03-08T17:56:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-fc83548b-7962-4d2e-9ccb-ebc4535e1032' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fc83548b-7962-4d2e-9ccb-ebc4535e1032' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>ping_time</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2018-03-08T17:37:40 ... 2018-03-...</div><input id='attrs-cd9a22d8-608e-410a-8350-30a4c14b63ce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cd9a22d8-608e-410a-8350-30a4c14b63ce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-76c07a19-68ec-473e-ae67-cc60369efa47' class='xr-var-data-in' type='checkbox'><label for='data-76c07a19-68ec-473e-ae67-cc60369efa47' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Ping time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2018-03-08T17:37:40.000000000&#x27;, &#x27;2018-03-08T17:38:00.000000000&#x27;,
+       &#x27;2018-03-08T17:38:20.000000000&#x27;, &#x27;2018-03-08T17:38:40.000000000&#x27;,
+       &#x27;2018-03-08T17:39:00.000000000&#x27;, &#x27;2018-03-08T17:39:20.000000000&#x27;,
+       &#x27;2018-03-08T17:39:40.000000000&#x27;, &#x27;2018-03-08T17:40:00.000000000&#x27;,
+       &#x27;2018-03-08T17:40:20.000000000&#x27;, &#x27;2018-03-08T17:40:40.000000000&#x27;,
+       &#x27;2018-03-08T17:41:00.000000000&#x27;, &#x27;2018-03-08T17:41:20.000000000&#x27;,
+       &#x27;2018-03-08T17:41:40.000000000&#x27;, &#x27;2018-03-08T17:42:00.000000000&#x27;,
+       &#x27;2018-03-08T17:42:20.000000000&#x27;, &#x27;2018-03-08T17:42:40.000000000&#x27;,
+       &#x27;2018-03-08T17:43:00.000000000&#x27;, &#x27;2018-03-08T17:43:20.000000000&#x27;,
+       &#x27;2018-03-08T17:43:40.000000000&#x27;, &#x27;2018-03-08T17:44:00.000000000&#x27;,
+       &#x27;2018-03-08T17:44:20.000000000&#x27;, &#x27;2018-03-08T17:44:40.000000000&#x27;,
+       &#x27;2018-03-08T17:45:00.000000000&#x27;, &#x27;2018-03-08T17:45:20.000000000&#x27;,
+       &#x27;2018-03-08T17:45:40.000000000&#x27;, &#x27;2018-03-08T17:46:00.000000000&#x27;,
+       &#x27;2018-03-08T17:46:20.000000000&#x27;, &#x27;2018-03-08T17:46:40.000000000&#x27;,
+       &#x27;2018-03-08T17:47:00.000000000&#x27;, &#x27;2018-03-08T17:47:20.000000000&#x27;,
+       &#x27;2018-03-08T17:47:40.000000000&#x27;, &#x27;2018-03-08T17:48:00.000000000&#x27;,
+       &#x27;2018-03-08T17:48:20.000000000&#x27;, &#x27;2018-03-08T17:48:40.000000000&#x27;,
+       &#x27;2018-03-08T17:49:00.000000000&#x27;, &#x27;2018-03-08T17:49:20.000000000&#x27;,
+       &#x27;2018-03-08T17:49:40.000000000&#x27;, &#x27;2018-03-08T17:50:00.000000000&#x27;,
+       &#x27;2018-03-08T17:50:20.000000000&#x27;, &#x27;2018-03-08T17:50:40.000000000&#x27;,
+       &#x27;2018-03-08T17:51:00.000000000&#x27;, &#x27;2018-03-08T17:51:20.000000000&#x27;,
+       &#x27;2018-03-08T17:51:40.000000000&#x27;, &#x27;2018-03-08T17:52:00.000000000&#x27;,
+       &#x27;2018-03-08T17:52:20.000000000&#x27;, &#x27;2018-03-08T17:52:40.000000000&#x27;,
+       &#x27;2018-03-08T17:53:00.000000000&#x27;, &#x27;2018-03-08T17:53:20.000000000&#x27;,
+       &#x27;2018-03-08T17:53:40.000000000&#x27;, &#x27;2018-03-08T17:54:00.000000000&#x27;,
+       &#x27;2018-03-08T17:54:20.000000000&#x27;, &#x27;2018-03-08T17:54:40.000000000&#x27;,
+       &#x27;2018-03-08T17:55:00.000000000&#x27;, &#x27;2018-03-08T17:55:20.000000000&#x27;,
+       &#x27;2018-03-08T17:55:40.000000000&#x27;, &#x27;2018-03-08T17:56:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>distance</span></div><div class='xr-var-dims'>(ping_time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a55b4bcd-c1a9-4ce3-89f0-13272b48194d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a55b4bcd-c1a9-4ce3-89f0-13272b48194d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4e1125f1-6de5-459f-b0cf-663d5660c379' class='xr-var-data-in' type='checkbox'><label for='data-4e1125f1-6de5-459f-b0cf-663d5660c379' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[56 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a051e20c-03cd-4097-b281-1f104dae7dd0' class='xr-section-summary-in' type='checkbox'  ><label for='section-a051e20c-03cd-4097-b281-1f104dae7dd0' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>ping_time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-e969bd18-3aab-422e-abc5-4a8ce96f4126' class='xr-index-data-in' type='checkbox'/><label for='index-e969bd18-3aab-422e-abc5-4a8ce96f4126' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2018-03-08 17:37:40&#x27;, &#x27;2018-03-08 17:38:00&#x27;,
+               &#x27;2018-03-08 17:38:20&#x27;, &#x27;2018-03-08 17:38:40&#x27;,
+               &#x27;2018-03-08 17:39:00&#x27;, &#x27;2018-03-08 17:39:20&#x27;,
+               &#x27;2018-03-08 17:39:40&#x27;, &#x27;2018-03-08 17:40:00&#x27;,
+               &#x27;2018-03-08 17:40:20&#x27;, &#x27;2018-03-08 17:40:40&#x27;,
+               &#x27;2018-03-08 17:41:00&#x27;, &#x27;2018-03-08 17:41:20&#x27;,
+               &#x27;2018-03-08 17:41:40&#x27;, &#x27;2018-03-08 17:42:00&#x27;,
+               &#x27;2018-03-08 17:42:20&#x27;, &#x27;2018-03-08 17:42:40&#x27;,
+               &#x27;2018-03-08 17:43:00&#x27;, &#x27;2018-03-08 17:43:20&#x27;,
+               &#x27;2018-03-08 17:43:40&#x27;, &#x27;2018-03-08 17:44:00&#x27;,
+               &#x27;2018-03-08 17:44:20&#x27;, &#x27;2018-03-08 17:44:40&#x27;,
+               &#x27;2018-03-08 17:45:00&#x27;, &#x27;2018-03-08 17:45:20&#x27;,
+               &#x27;2018-03-08 17:45:40&#x27;, &#x27;2018-03-08 17:46:00&#x27;,
+               &#x27;2018-03-08 17:46:20&#x27;, &#x27;2018-03-08 17:46:40&#x27;,
+               &#x27;2018-03-08 17:47:00&#x27;, &#x27;2018-03-08 17:47:20&#x27;,
+               &#x27;2018-03-08 17:47:40&#x27;, &#x27;2018-03-08 17:48:00&#x27;,
+               &#x27;2018-03-08 17:48:20&#x27;, &#x27;2018-03-08 17:48:40&#x27;,
+               &#x27;2018-03-08 17:49:00&#x27;, &#x27;2018-03-08 17:49:20&#x27;,
+               &#x27;2018-03-08 17:49:40&#x27;, &#x27;2018-03-08 17:50:00&#x27;,
+               &#x27;2018-03-08 17:50:20&#x27;, &#x27;2018-03-08 17:50:40&#x27;,
+               &#x27;2018-03-08 17:51:00&#x27;, &#x27;2018-03-08 17:51:20&#x27;,
+               &#x27;2018-03-08 17:51:40&#x27;, &#x27;2018-03-08 17:52:00&#x27;,
+               &#x27;2018-03-08 17:52:20&#x27;, &#x27;2018-03-08 17:52:40&#x27;,
+               &#x27;2018-03-08 17:53:00&#x27;, &#x27;2018-03-08 17:53:20&#x27;,
+               &#x27;2018-03-08 17:53:40&#x27;, &#x27;2018-03-08 17:54:00&#x27;,
+               &#x27;2018-03-08 17:54:20&#x27;, &#x27;2018-03-08 17:54:40&#x27;,
+               &#x27;2018-03-08 17:55:00&#x27;, &#x27;2018-03-08 17:55:20&#x27;,
+               &#x27;2018-03-08 17:55:40&#x27;, &#x27;2018-03-08 17:56:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;ping_time&#x27;, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-407fa2f8-e919-4694-ad7a-c31edcc0a420' class='xr-section-summary-in' type='checkbox'  checked><label for='section-407fa2f8-e919-4694-ad7a-c31edcc0a420' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Ping time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="arbitrary-attributes">
+<h2>Arbitrary attributes<a class="headerlink" href="#arbitrary-attributes" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.attrs</span></code> accesses arbitrary Python objects</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">attrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;long_name&#39;: &#39;Mean volume backscattering strength (MVBS, mean Sv re 1 m-1)&#39;,
+ &#39;units&#39;: &#39;dB&#39;,
+ &#39;cell_methods&#39;: &#39;ping_time: mean (interval: 20 second comment: ping_time is the interval start) depth: mean (interval: 1.0 meter comment: depth is the interval start)&#39;,
+ &#39;binning_mode&#39;: &#39;physical units&#39;,
+ &#39;range_meter_interval&#39;: &#39;1.0m&#39;,
+ &#39;ping_time_interval&#39;: &#39;20s&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="underlying-data">
+<h2>Underlying data<a class="headerlink" href="#underlying-data" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.data</span></code> provides a numpy array of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[  -5.39899748,  -48.07659193,  -63.75903519, ...,
+          -71.56176958,  -70.07443808,  -73.61853404],
+        [  -5.39841889,  -47.99347366,  -60.37225114, ...,
+          -72.11076332,  -70.23981213,  -64.47404412],
+        [  -5.40472683,  -47.72382744,  -62.67726021, ...,
+          -71.63455799,  -72.10542816,  -70.33461994],
+        ...,
+        [  -5.39827401,  -47.86048276,  -54.00332204, ...,
+          -85.95707529,  -84.63576156,  -72.2805111 ],
+        [  -5.39912171,  -48.10224624,  -60.93082939, ...,
+          -84.55301826,  -84.70536263,  -83.24944725],
+        [  -5.39758431,  -48.26197719,  -64.18465403, ...,
+          -86.28710553,  -86.81176325,  -88.76636258]],
+
+       [[   3.15885377,  -38.44519798,  -54.36227604, ...,
+          -80.13906637,  -80.45344653,  -81.97789315],
+        [   3.15592311,  -38.23343805,  -52.12854729, ...,
+          -78.7256882 ,  -78.5418573 ,  -78.27049983],
+        [   3.15616802,  -37.4288255 ,  -50.63572917, ...,
+          -81.97694358,  -81.50378774,  -79.98169947],
+        ...,
+        [   3.15607316,  -37.59210649,  -50.16228425, ...,
+          -86.927515  ,  -88.54854379,  -88.960118  ],
+        [   3.15595178,  -38.28459339,  -53.05015036, ...,
+          -88.28901121,  -87.46595035,  -83.65314291],
+        [   3.1476543 ,  -38.60376643,  -55.38055168, ...,
+          -93.15740883,  -92.28904999,  -91.27076991]],
+
+       [[   6.92800977,  -44.73795146,  -49.5200917 , ...,
+          -68.89411506,  -68.01694195,  -69.31202215],
+        [   6.92521327,  -38.54760911,  -49.47204689, ...,
+          -65.75576199,  -67.34597494,  -68.09583734],
+        [   6.92835971,  -36.14992122,  -47.95768712, ...,
+          -71.60858605,  -71.75244162,  -68.81134873],
+        ...,
+        [   6.93130212,  -41.33244076,  -45.32940975, ...,
+          -73.09092793,  -74.36050812,  -73.45487112],
+        [   6.93055684,  -43.4109575 ,  -48.08704948, ...,
+          -73.07889115,  -72.72800964,  -70.81745627],
+        [   6.9294225 , -102.14985417,  -76.09830699, ...,
+          -77.29713261,  -77.56405183,  -78.86324709]],
+
+       [[  11.5517853 ,  -43.87133901,  -53.24637995, ...,
+          -58.20108719,  -57.44617272,  -56.72861455],
+        [  11.56143712,  -44.40143037,  -49.46683926, ...,
+          -57.18630736,  -57.75295707,  -57.6994196 ],
+        [  11.55717174,  -39.66102104,  -48.15602337, ...,
+          -57.79470358,  -58.11791247,  -57.0121608 ],
+        ...,
+        [  11.55860356,  -44.21688716,  -47.41598151, ...,
+          -58.05359834,  -58.55572961,  -58.31812045],
+        [  11.5582024 ,  -49.02516738,  -51.85648398, ...,
+          -58.27373517,  -58.30491711,  -57.81388433],
+        [  11.52736348,  -93.49574351, -100.38925177, ...,
+          -57.42234579,  -62.74868122,  -59.18587952]]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
+<p>Plotting can be done easily:</p>
+<ul class="simple">
+<li><p>we use the <code class="docutils literal notranslate"><span class="pre">.</span></code>notation to select the DatArray <code class="docutils literal notranslate"><span class="pre">mvbs.Sv</span></code></p></li>
+<li><p>we select one channel of the data through indexing <code class="docutils literal notranslate"><span class="pre">.isel(channel=1)</span></code></p></li>
+<li><p>we want to plot <code class="docutils literal notranslate"><span class="pre">.plot</span></code></p></li>
+<li><p>we want <code class="docutils literal notranslate"><span class="pre">ping_time</span></code> to represent the x axis and <code class="docutils literal notranslate"><span class="pre">depth</span></code> the y axis and we want depth to have 0 on top: <code class="docutils literal notranslate"><span class="pre">x='ping_time',</span> <span class="pre">y='depth',</span> <span class="pre">yincrease</span> <span class="pre">=</span> <span class="pre">False</span></code></p></li>
+<li><p>we want some additional decorations, so we set the colormap <code class="docutils literal notranslate"><span class="pre">cmap='RdYlBu_r'</span></code> and we set the colorbar limits to be within <code class="docutils literal notranslate"><span class="pre">vmin=-75</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax=-40</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mvbs</span><span class="o">.</span><span class="n">Sv</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;ping_time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;depth&quot;</span><span class="p">,</span> 
+                             <span class="n">yincrease</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                             <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> 
+                             <span class="n">vmin</span><span class="o">=-</span><span class="mi">75</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=-</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x162a1453470&gt;
+</pre></div>
+</div>
+<img alt="_images/ee482e9e97ef0f943f27edfede5c12df5f5786eb9c302d60ad65c5b2ce730b7a.png" src="_images/ee482e9e97ef0f943f27edfede5c12df5f5786eb9c302d60ad65c5b2ce730b7a.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_datan.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python_package.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Creating a Python Package <code class="docutils literal notranslate"><span class="pre">uwa</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pandas and Xarray</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-between-xarray-and-pandas">Differences Between xarray and pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-pandas-vs-xarray">When to Use Pandas vs. Xarray?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-datframe-in-pandas">Creating a DatFrame in Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-wrangling">Data Wrangling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-plotting">Pandas Plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">Heatmaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-pandas-and-r-dplyr">Comparison of Pandas and R dplyr</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataarray">DataArray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensions">Dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinates">Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrary-attributes">Arbitrary attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-data">Underlying data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wu-Jung Lee, Sven Gastauer, Erin LaBrecque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
