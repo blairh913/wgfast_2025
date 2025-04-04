@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating a Python Package underwater_acoustics &#8212; WGFAST 2025 workshop</title>
+    <title>Creating a Python Package uwa &#8212; WGFAST 2025 workshop</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Echopype basics" href="tool_echopype_basics.html" />
-    <link rel="prev" title="Xarray" href="python_xarray.html" />
+    <link rel="prev" title="Pandas and Xarray" href="python_pandas_xarray.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,9 +199,10 @@
 <li class="toctree-l1"><a class="reference internal" href="python_editors.html">Python Editors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_jupyter.html">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Python (very basic) Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_datan.html">Common data analysis tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_xarray.html">Xarray</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating a Python Package <code class="docutils literal notranslate"><span class="pre">underwater_acoustics</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_datan.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_pandas_xarray.html">Pandas and Xarray</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating a Python Package <code class="docutils literal notranslate"><span class="pre">uwa</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Echopype-related tools</span></p>
 <ul class="nav bd-sidenav">
@@ -413,7 +414,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Creating a Python Package underwater_acoustics</h1>
+    <h1>Creating a Python Package uwa</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -444,8 +445,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="creating-a-python-package-underwater-acoustics">
-<h1>Creating a Python Package <code class="docutils literal notranslate"><span class="pre">underwater_acoustics</span></code><a class="headerlink" href="#creating-a-python-package-underwater-acoustics" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-a-python-package-uwa">
+<h1>Creating a Python Package <code class="docutils literal notranslate"><span class="pre">uwa</span></code><a class="headerlink" href="#creating-a-python-package-uwa" title="Link to this heading">#</a></h1>
 <p>Here we create a Python package from scratch for <strong>underwater acoustic wave calculations</strong>.</p>
 <p>We will implement:<br />
 ✅ A <strong>class</strong> <code class="docutils literal notranslate"><span class="pre">AcousticWave</span></code><br />
@@ -486,9 +487,9 @@ document.write(`
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>A major benefit of initialisation files is that we can control which modules or sub-packages are avaialable when the package is imported . Through importing functions or classes in the init file, we can use them without the need to import them explicitly.</p>
+<p>A major benefit of initialisation files is that we can control which modules or sub-packages are available when the package is imported . Through importing functions or classes in the init file, we can use them without the need to import them explicitly.</p>
 <p>As a consequence of this init file, at a later stage, when we ar eusing our package we can use the class AcousticWave as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">uwa.uwa</span><span class="w"> </span><span class="kn">import</span> <span class="n">AcousticWave</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">uwa</span><span class="w"> </span><span class="kn">import</span> <span class="n">AcousticWave</span>
 </pre></div>
 </div>
 <p>instead of having to import it from the <code class="docutils literal notranslate"><span class="pre">wave</span></code> module within the <code class="docutils literal notranslate"><span class="pre">uwa</span></code> package:</p>
@@ -503,14 +504,14 @@ document.write(`
 <li><p>import dependencies: Our package depends on the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">math</span></code> packages for some basic operations.</p></li>
 <li><p>class definition: We start by defining a <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">AcousticWave</span></code></p></li>
 <li><p>class docstring: The first part is the docstring, containing information on what the purpose of this class is, and the a description of the input variables or class attributes.</p></li>
-<li><p>class initialisation: the class contains a self reference instance <code class="docutils literal notranslate"><span class="pre">self</span></code> and the two needed attributes <code class="docutils literal notranslate"><span class="pre">frequency</span></code> and <code class="docutils literal notranslate"><span class="pre">speed</span></code> which we assign to self during the initialisation, such that we can use it within the methods described in the class</p></li>
+<li><p>class initialisation: the class contains a self reference instance <code class="docutils literal notranslate"><span class="pre">self</span></code> and the needed attributes <code class="docutils literal notranslate"><span class="pre">frequency</span></code>, <code class="docutils literal notranslate"><span class="pre">speed</span></code> and <code class="docutils literal notranslate"><span class="pre">bw</span></code> which we assign to self during the initialisation, such that we can use it within the methods described in the class</p></li>
 <li><p>define methods: we defined 3 methods within the <code class="docutils literal notranslate"><span class="pre">AcousticWave</span></code>class. <code class="docutils literal notranslate"><span class="pre">wave_number</span></code> and <code class="docutils literal notranslate"><span class="pre">wave_length</span></code> only depend on the attributes of the class, while <code class="docutils literal notranslate"><span class="pre">nearfield_distance</span></code> needs an additional input value.</p></li>
 <li><p>define function <code class="docutils literal notranslate"><span class="pre">deadzone</span></code> outside of the class definition</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>self</em><br />
-n Python, self refers to the instance of a class and is used to access the instance’s attributes and methods. It allows each object created from a class to maintain its own state and interact with its own data. When you define a method in a class, self is the first parameter, and it is automatically passed when you call the method on an object. This allows you to work with the specific instance of the class.
+In Python, self refers to the instance of a class and is used to access the instance’s attributes and methods. It allows each object created from a class to maintain its own state and interact with its own data. When you define a method in a class, self is the first parameter, and it is automatically passed when you call the method on an object. This allows you to work with the specific instance of the class.
 In our example <code class="docutils literal notranslate"><span class="pre">self</span></code> allows our functions or methods to access the <code class="docutils literal notranslate"><span class="pre">frequency</span></code> and <code class="docutils literal notranslate"><span class="pre">speed</span></code> attributes from the AcousticWave class.</p>
 </div>
 <div class="admonition note">
@@ -557,27 +558,27 @@ Most likely the nomenclature is not used consistently within this tutorial…Tec
 
     <span class="k">def</span><span class="w"> </span><span class="nf">active_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the active radius of a round transducer in ster&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="mf">1.6</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wave_number</span><span class="p">()</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bw</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mf">3.2</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wave_number</span><span class="p">()</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bw</span> <span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="p">))</span>
         
     <span class="k">def</span><span class="w"> </span><span class="nf">nearfield_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the acoustic near-field distance in m&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_radius</span><span class="p">()</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span><span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">wavelength</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_radius</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">wavelength</span><span class="p">())</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">deadzone</span><span class="p">(</span><span class="n">BD</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deadzone</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span><span class="n">q</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the distance from the bottom at which there is bias</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        BD (float or integer): Bottom Depth in m</span>
-<span class="sd">        theta (float or integer): Angle at which fish are located, alternatively the 3dB beamwidth can be used in °</span>
+<span class="sd">        d (float or integer): Bottom Depth in m</span>
 <span class="sd">        speed (float or integer): Ambient sound speed in m/s</span>
+<span class="sd">        q (float or integer): slope of the seafloor in °</span>
 <span class="sd">        tau (float or integer): pulse duration in s</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Distance from the bottom where there is bias in m</span>
 <span class="sd">        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">BD</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cos</span><span class="p">(</span> <span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="n">speed</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span> <span class="o">-</span> <span class="n">q</span><span class="p">))</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">speed</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -585,31 +586,31 @@ Most likely the nomenclature is not used consistently within this tutorial…Tec
 <p>We can test our functions quickly here:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aw</span> <span class="o">=</span> <span class="n">AcousticWave</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">1450</span><span class="p">,</span> <span class="n">frequency</span> <span class="o">=</span> <span class="mf">120e3</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aw</span> <span class="o">=</span> <span class="n">AcousticWave</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">1470</span><span class="p">,</span> <span class="n">frequency</span> <span class="o">=</span> <span class="mf">120e3</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">aw</span><span class="o">.</span><span class="vm">__dict__</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;frequency&#39;: 120000.0,
- &#39;speed&#39;: 1450,
+ &#39;speed&#39;: 1470,
  &#39;bw&#39;: 7,
- &#39;wl&#39;: 0.012083333333333333,
- &#39;k&#39;: 519.9877495596899,
- &#39;ar&#39;: 5.040244352915992,
- &#39;rnf&#39;: 0.8409620900557754}
+ &#39;wl&#39;: 0.01225,
+ &#39;k&#39;: 512.9130863003744,
+ &#39;ar&#39;: 0.102195299293607,
+ &#39;rnf&#39;: 2.008800867092126}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deadzone</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1450</span><span class="p">,</span><span class="mf">0.0004</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deadzone</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">speed</span><span class="o">=</span><span class="mi">1450</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47652015781330803
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.252618041008295
 </pre></div>
 </div>
 </div>
@@ -787,12 +788,12 @@ Let’s test it:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uwa</span><span class="o">.</span><span class="n">deadzone</span><span class="p">(</span><span class="n">BD</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">speed</span> <span class="o">=</span> <span class="mi">1450</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.0004</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uwa</span><span class="o">.</span><span class="n">deadzone</span><span class="p">(</span><span class="n">d</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">speed</span> <span class="o">=</span> <span class="mi">1450</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.0004</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47652015781330803
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.707777247591218
 </pre></div>
 </div>
 </div>
@@ -855,13 +856,13 @@ class AcousticWave(builtins.object)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function deadzone in module uwa.wave:
 
-deadzone(BD, theta, speed, tau)
+deadzone(d, speed, q, tau)
     Calculate the distance from the bottom at which there is bias
 
     Parameters:
-        BD (float or integer): Bottom Depth in m
-        theta (float or integer): Angle at which fish are located, alternatively the 3dB beamwidth can be used in °
+        d (float or integer): Bottom Depth in m
         speed (float or integer): Ambient sound speed in m/s
+        q (float or integer): slope of the seafloor in °
         tau (float or integer): pulse duration in s
 
     Returns:
@@ -904,12 +905,12 @@ deadzone(BD, theta, speed, tau)
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="python_xarray.html"
+       href="python_pandas_xarray.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Xarray</p>
+        <p class="prev-next-title">Pandas and Xarray</p>
       </div>
     </a>
     <a class="right-next"

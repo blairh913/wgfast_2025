@@ -35,24 +35,24 @@ class AcousticWave:
 
     def active_radius(self):
         """Calculates the active radius of a round transducer in ster"""
-        return 1.6 * 100 / (self.wave_number() * sin(radians(self.bw) / 2))
+        return 3.2 / (self.wave_number() * sin(radians(self.bw /2) ))
         
     def nearfield_distance(self):
         """Calculate the acoustic near-field distance in m"""
-        return ((2 * self.active_radius() / 100)** 2) / self.wavelength()
+        return pi * self.active_radius()**2 / (4 * self.wavelength())
 
-def deadzone(BD, theta, speed, tau):
+def deadzone(d, speed,q, tau):
     """
     Calculate the distance from the bottom at which there is bias
 
     Parameters:
-        BD (float or integer): Bottom Depth in m
-        theta (float or integer): Angle at which fish are located, alternatively the 3dB beamwidth can be used in °
+        d (float or integer): Bottom Depth in m
         speed (float or integer): Ambient sound speed in m/s
+        q (float or integer): slope of the seafloor in °
         tau (float or integer): pulse duration in s
 
     Returns:
         Distance from the bottom where there is bias in m
         
     """
-    return BD * (1 - cos( radians(theta) / 2) ) + speed * tau / 2
+    return (d / sin(radians(90 - q)) - d) + speed * tau / 2

@@ -35,10 +35,10 @@ parts:
     - file: python_jupyter #jupyter
     - file: python # maths, built in file structures
     - file: python_datan #data analysis tools
-    - file: python_xarray #xarray
+    - file: python_pandas_xarray # pandas and xarray
     - file: python_package #Build package from scratch
     #- file: python_webapp #widgets and weapps
-    #- file: python_plotting #plotting interactively
+    - file: notebook_demo #plotting interactively
   - caption: Echopype-related tools  # echopype-related tools
     chapters:
     - title: Overview
