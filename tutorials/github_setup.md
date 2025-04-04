@@ -1,4 +1,4 @@
-# 1. GitHub Setup
+# GitHub Setup
 
 ```{image} images/Octocat.png
 :alt: GitHub Octocat
@@ -69,7 +69,7 @@ Or, you can choose `Settings` and edit your profile from there.
 
 ## Account settings
 
-You account settings allow you to manage your personal information, security, accessibility, and preferences, including email preferences, notifications, and more.
+Your account settings allow you to manage your personal information, security, accessibility, and preferences, including email preferences, notifications, and more.
 
 ### Personal Account Settings
 

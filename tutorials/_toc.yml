@@ -19,7 +19,7 @@ parts:
     - file: github_setup
     - file: github_desktop_setup
     - file: git_setup
-    #- file:    #mini-forge setup
+    - file: python_install #install miniforge - minimal mamba, conda, python
     #- file:    #jupyter setup
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
@@ -28,7 +28,6 @@ parts:
   - caption: Python tutorials  # python, jupyter
     chapters:
     - file: python_bkg #history, background and zen of python
-    - file: python_install #install miniforge - minimal mamba, conda, python
     - file: python_packages #packages how to write a python package
     - file: python_pkgmgmt #environments and package management
     - file: python_editors #Python editors / IDEs

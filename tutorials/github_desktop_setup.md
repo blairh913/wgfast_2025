@@ -1,4 +1,4 @@
-# 2. GitHub Desktop Setup
+# GitHub Desktop Setup
 
 If you prefer to use a Graphical User Interface (GUI) instead of the command line in a terminal, download and install GitHub Desktop.
 

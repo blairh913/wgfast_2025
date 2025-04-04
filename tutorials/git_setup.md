@@ -1,4 +1,4 @@
-# 3. Git Setup
+# Git Setup
 
 ```{image} images/Git-Icon-1788C.png
 :alt: Git Logo
@@ -19,7 +19,8 @@ How you download and install Git depends on your operating system.
 Choose one:
 
 **GUI** - Download and install [GitHub Desktop](https://desktop.github.com/download/)  
-**Terminal** - From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) section of _Pro Git_
+**Terminal** - From the [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) section of _Pro Git_  
+If using a terminal, after installing see the **Configure Git - Terminal Addition** section below to configure Git.
 
 ```{image} images/GitInstall_MacOS_1.png
 :alt: 
@@ -42,7 +43,8 @@ Choose one:
 
 **GUI** - Download and install [GitHub Desktop](https://desktop.github.com/download/)
 
-**Terminal** _Git BASH_ - Download and and install [Git for Windows](https://gitforwindows.org/). Git BASH is a terminal emulator that comes with Git for Windows. Although Git for Windows is not maintained by the Git developers, they recommend using it.
+**Terminal** _Git BASH_ - Download and and install [Git for Windows](https://gitforwindows.org/). Git BASH is a terminal emulator that comes with Git for Windows. Although Git for Windows is not maintained by the Git developers, they recommend using it.  
+If using a terminal, after installing see the **Configure Git - Terminal Addition** section below to configure Git.
 
 **Terminal** _PowerShell_
 

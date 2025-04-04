@@ -1,11 +1,12 @@
 # Agenda
-All times in GMT  
-Room?  
-Zoom link? What is the virtual software?
 
-<br>
+All times in Iceland local time (UTC).
 
-|Day 1 - April 5, 2025  |               |
+For remote participation, please use the Teams link you received in your email.
+
+&nbsp;
+
+|Day 1 - April 6, 2025  |               |
 | :---          | :----:                |
 |2:00 - 2:30 pm | Introductions         |
 |2:30 - 2:45 pm | Break                 |
@@ -16,7 +17,7 @@ Zoom link? What is the virtual software?
 
 ---
 
-| Day 2 - April 6, 2025 |                              |
+| Day 2 - April 7, 2025 |                              |
 | :---          | :----:                               |
 |2:00 - 2:15 pm | Open-source Python tools             |
 |2:15 - 3:15 pm | Data manipulation and plotting       |
