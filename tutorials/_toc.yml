@@ -32,12 +32,13 @@ parts:
     - file: python_pkgmgmt #environments and package management
     - file: python_editors #Python editors / IDEs
     - file: python_jupyter #jupyter
+    - file: notebook_demo #demo of a jupyter notebook
     - file: python # maths, built in file structures
     - file: python_datan #data analysis tools
     - file: python_pandas_xarray # pandas and xarray
+    - file: python_xarray # xarray example
     - file: python_package #Build package from scratch
     #- file: python_webapp #widgets and weapps
-    - file: notebook_demo #plotting interactively
   - caption: Echopype-related tools  # echopype-related tools
     chapters:
     - title: Overview
