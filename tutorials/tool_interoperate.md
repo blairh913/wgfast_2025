@@ -134,12 +134,11 @@ imagesc(depth, ping_time_datetime, Sv);
 
 However, if you only have an older version of Matlab, you can use the following workaround (from [here](https://www.mathworks.com/matlabcentral/answers/1634620-imagesc-or-equivalent-with-datetime-as-x-axis#answer_881580)):
 ```matlab
-imagesc(Sv);
-xticks = 1:20:180;  % plot ticks with 20 ping_time spacing
-xlabels = cellstr(ping_time_datetime(xticks))
+imagesc(Sv(:,:,2));
+xticks = 20:50:180;  % plot ticks with 20 ping_time spacing
+xlabels = cellstr(ping_time_datetime(xticks));
 set(gca, 'XTick',xticks, 'XTickLabel', xlabels)
-set('ylabel', 'Depth (m)')
-set(gca, 'ylabel', 'Depth (m)')
+set(gca, 'fontsize', 12)
 ylabel('Depth (m)')
 clim([-80, -30])
 colorbar
