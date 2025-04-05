@@ -1,4 +1,4 @@
-# Echopype out-of-memory computation
+# Echopype out-of-core computation
 
 - demo using the OOI eclipse notebook
 - show dask clients and diagnostic plots
