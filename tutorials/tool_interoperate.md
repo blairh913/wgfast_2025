@@ -6,6 +6,10 @@ Should probably have this in echopype docs!
 
 Matlab provides quite a bit of functionalities to work with netCDF files (see [here](https://www.mathworks.com/help/matlab/network-common-data-form.html)). This [Import NetCDF Files and OPeNDAP Data](https://www.mathworks.com/help/matlab/import_export/importing-network-common-data-form-netcdf-files-and-opendap-data.html) page in particular shows a nice example walking through various functions.
 
+```{tip}
+Here we only cover netCDF files, but Matlab also has a set of functions to work with Zarr files in [this repository](https://github.com/mathworks/MATLAB-support-for-Zarr-files).
+```
+
 Below is a simple example showing how to use `ncinfo`, `ncdisp`, `ncread`, and `ncreadatt` to read and plot an Echopype-generated MVBS dataset. The file we use here is located in the path: `/tutorials/resources/test_MVBS.nc` if you want to give the below commands a try.
 
 To figure out what the dimensions and variable are in this netCDF file, we use `ncinfo`:
