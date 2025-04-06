@@ -330,7 +330,7 @@ ping_data %>%
 &nbsp;
 
 ```{image} ./images/tool/R_echogram.png
-:width: 600px
+:width: 1000px
 :align: center
 ```
 
