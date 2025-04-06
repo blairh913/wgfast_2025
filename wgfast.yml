@@ -4,6 +4,7 @@ channels:
   - defaults
 dependencies:
   - echopype=0.10.1
+  - datashader=0.17.0
   - holoviews=1.20.2
   - hvplot=0.11.2
   - jupyter=1.1.1

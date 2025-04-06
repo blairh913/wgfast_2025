@@ -9,10 +9,14 @@ parts:
     - file: agenda
     - title: Introduction
       url: https://docs.google.com/presentation/d/1HkNFWCowsjM-eOssQu55icDnICvG_s0Ska3MThQjFTM/edit?usp=sharing
-    - title: Reproducible research best practices
-      url: https://docs.google.com/presentation/d/13p2R3KcbnoxD1Vdub8M0uMxhl8O7RmgUvLgnT1N1HYk/edit?usp=sharing
     - title: Discourse forum
       url: https://discourse.ocean-acoustics.org/
+    - title: Conda environment file
+      url: https://github.com/BOAT-ocean-acoustics/wgfast_2025/blob/main/wgfast.yml
+    - title: Day 1 recap
+      url: https://docs.google.com/presentation/d/18c1YSih0UmcJU0Iq8gKy9q6mxAWLJsoZyjFlljwTeJI/edit?usp=sharing
+    - title: Reproducible research best practices
+      url: https://docs.google.com/presentation/d/13p2R3KcbnoxD1Vdub8M0uMxhl8O7RmgUvLgnT1N1HYk/edit?usp=sharing
   - caption: Pre-workshop Setup
     chapters:
     - file: pre_workshop_setup # Pre-workshop notes
@@ -23,10 +27,14 @@ parts:
     #- file:    #jupyter setup
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
-    - file: github_intro
-    - file: git_intro
+    - file: github_intro # creating a repo
+    - file: git_intro # basic command and workflow image
+    - title: Git and GitHub slide deck
+      url: https://docs.google.com/presentation/d/19RSUKhcfbq_L5uh4EcAZCP8Kaa2tRIRUtwyu0g7HM30/edit?usp=sharing
   - caption: Python tutorials  # python, jupyter
     chapters:
+    - title: Python slide deck
+      url: https://docs.google.com/presentation/d/1sLgjtBxKlTd8OLPShDwjnQsESx0bUucvgDComSsMl6M/edit?usp=sharing
     - file: python_bkg #history, background and zen of python
     - file: python_packages #packages how to write a python package
     - file: python_pkgmgmt #environments and package management
@@ -45,6 +53,7 @@ parts:
       url: https://docs.google.com/presentation/d/1IRYz0j_AdjfVdy4YMGHF5a9CQZz7emXP5Ssv8zyXDPU/edit?usp=sharing
     - title: Getting started on Echopype  # basics
       url: https://echopype-examples.readthedocs.io/en/latest/getting_started.html
+    - file: tool_echopype_exercise
     - title: Out-of-core computation with Echopype  # demo: dask + zarr
       url: https://echopype-examples.readthedocs.io/en/latest/OOI_eclipse.html
     - title: Creating region masks with Echoregions
