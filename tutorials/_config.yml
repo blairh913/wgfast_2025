@@ -38,9 +38,14 @@ html:
   use_repository_button: true
 
 sphinx:
+  recursive_update: true  # needed to default to light mode
   extra_extensions: [
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.githubpages'
   ]
+  # Default to light mode
+  # See: https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/light-dark.html#configure-default-theme-mode
+  html_context:
+    default_mode: light
