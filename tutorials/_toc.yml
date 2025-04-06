@@ -23,8 +23,10 @@ parts:
     #- file:    #jupyter setup
   - caption: Git/GitHub tutorials  # Git/GitHub tutorials
     chapters:
-    - file: github_intro
-    - file: git_intro
+    - file: github_intro # creating a repo
+    - file: git_intro # basic command and workflow image
+    - title: Git and GitHub Slide Deck
+      url: https://docs.google.com/presentation/d/19RSUKhcfbq_L5uh4EcAZCP8Kaa2tRIRUtwyu0g7HM30/edit?usp=sharing
   - caption: Python tutorials  # python, jupyter
     chapters:
     - file: python_bkg #history, background and zen of python
