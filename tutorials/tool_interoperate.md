@@ -1,4 +1,4 @@
-# Interoperating Echopype-generated data
+# Interoperate Echopype-generated data
 
 Should probably have this in echopype docs!
 
