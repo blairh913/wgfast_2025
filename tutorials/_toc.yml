@@ -9,6 +9,8 @@ parts:
     - file: agenda
     - title: Introduction
       url: https://docs.google.com/presentation/d/1HkNFWCowsjM-eOssQu55icDnICvG_s0Ska3MThQjFTM/edit?usp=sharing
+    - title: Environment file
+      url: https://github.com/BOAT-ocean-acoustics/wgfast_2025/blob/main/wgfast.yml
     - title: Reproducible research best practices
       url: https://docs.google.com/presentation/d/13p2R3KcbnoxD1Vdub8M0uMxhl8O7RmgUvLgnT1N1HYk/edit?usp=sharing
     - title: Discourse forum
