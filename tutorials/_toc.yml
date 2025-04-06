@@ -43,8 +43,8 @@ parts:
     chapters:
     - title: Overview
       url: https://docs.google.com/presentation/d/1IRYz0j_AdjfVdy4YMGHF5a9CQZz7emXP5Ssv8zyXDPU/edit?usp=sharing
-    - file: tool_echopype_basics  # basics
-    - file: tool_echoregions  # masking regions and lines
+    - title: Getting started on Echopype  # basics
+      url: https://echopype-examples.readthedocs.io/en/latest/getting_started.html
     - title: Out-of-core computation with Echopype  # demo: dask + zarr
       url: https://echopype-examples.readthedocs.io/en/latest/OOI_eclipse.html
     - title: Creating region masks with Echoregions
