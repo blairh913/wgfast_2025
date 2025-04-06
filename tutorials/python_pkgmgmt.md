@@ -19,10 +19,11 @@ For example package A might have been written based on version 1.2 of package B.
 
 A Python environment can be seen as a separate workspace where you can run Python programs without interfering with other projects. It helps keeping things organized by managing different versions of Python and packages needed for each project. For example, if one project needs Python 3.8 and another needs Python 3.10, you can create separate environments for each, so they don’t mix and cause problems. Tools like [virtualenv](https://virtualenv.pypa.io/en/latest/), [venv](https://docs.python.org/3/library/venv.html), and [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) or [mamba](https://mamba.readthedocs.io/en/latest/) help create and manage these environments easily.  
 
-Uisng environments has a number of benefits:  
+Uisng environments has a number of benefits:
+
 - **Avoiding Dependency Conflicts**  
 Different projects may require different versions of libraries. A Python environment ensures that each project uses the correct versions without conflicts.  
-- **Keeping Projects Organized**  
+- **Keeping Projects Organized**
 Each environment acts as a separate workspace, so your global Python installation remains clean and uncluttered.
 - **Working with Different Python Versions**  
 You can create environments with different Python versions, which is useful if one project needs Python <3.8 while another needs Python >3.10.
@@ -54,6 +55,13 @@ Virtual environments like they are commonly used in Python exist in R as well, t
 If you decide to use ```conda``` instead of ```mamba```, you can replace ```mamba``` by ```conda``` in all commands listed here.
 
 1) Creating a new environment  
+
+    To create a new environment called ´my_env´ from a yml called ´my_env.yml´ file we use:  
+
+    ´´´bash
+    mamba env create -n my_env -f my_env.yml
+    ´´´
+    or we can create an environment from scratch:  
 
     To create a new environment (called ```my_env```) with a specific Python version (here 3.12) we use:  
 
