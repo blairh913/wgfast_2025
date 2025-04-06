@@ -13,6 +13,8 @@ parts:
       url: https://discourse.ocean-acoustics.org/
     - title: Conda environment file
       url: https://github.com/BOAT-ocean-acoustics/wgfast_2025/blob/main/wgfast.yml
+    - title: Day 1 recap
+      url: https://docs.google.com/presentation/d/18c1YSih0UmcJU0Iq8gKy9q6mxAWLJsoZyjFlljwTeJI/edit?usp=sharing
     - title: Reproducible research best practices
       url: https://docs.google.com/presentation/d/13p2R3KcbnoxD1Vdub8M0uMxhl8O7RmgUvLgnT1N1HYk/edit?usp=sharing
   - caption: Pre-workshop Setup
