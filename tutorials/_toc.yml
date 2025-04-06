@@ -27,10 +27,12 @@ parts:
     chapters:
     - file: github_intro # creating a repo
     - file: git_intro # basic command and workflow image
-    - title: Git and GitHub Slide Deck
+    - title: Git and GitHub slide deck
       url: https://docs.google.com/presentation/d/19RSUKhcfbq_L5uh4EcAZCP8Kaa2tRIRUtwyu0g7HM30/edit?usp=sharing
   - caption: Python tutorials  # python, jupyter
     chapters:
+    - title: Python slide deck
+      url: https://docs.google.com/presentation/d/1sLgjtBxKlTd8OLPShDwjnQsESx0bUucvgDComSsMl6M/edit?usp=sharing
     - file: python_bkg #history, background and zen of python
     - file: python_packages #packages how to write a python package
     - file: python_pkgmgmt #environments and package management
