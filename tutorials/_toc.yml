@@ -51,12 +51,10 @@ parts:
     chapters:
     - title: Overview
       url: https://docs.google.com/presentation/d/1IRYz0j_AdjfVdy4YMGHF5a9CQZz7emXP5Ssv8zyXDPU/edit?usp=sharing
-    - title: "Echopype: getting started"  # basics
-      url: https://echopype-examples.readthedocs.io/en/latest/getting_started.html
-    - file: tool_echopype_exercise
+    - file: tool_echopype_exercise  # basics
     - title: "Echopype: out-of-core computation"  # demo: dask + zarr
       url: https://echopype-examples.readthedocs.io/en/latest/OOI_eclipse.html
-    - title: "Echoregions: creating region masks"
+    - title: "Echoregions: creating region masks"  # echoregions
       url: https://echoregions.readthedocs.io/en/latest/Regions2D_functionality.html
-    - file: tool_echoshader_demo  # demo: echoshader
-    - file: tool_interoperate  # demo: open echopype output in R and matlab
+    - file: tool_echoshader_demo  # echoshader
+    - file: tool_interoperate  # open echopype output in R and matlab
